@@ -14,6 +14,11 @@
 		2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E311F8B4B590053E642 /* LaunchScreen.storyboard */; };
 		2F091E3E1F8B4B590053E642 /* RST_SimplifiedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E3D1F8B4B590053E642 /* RST_SimplifiedTests.swift */; };
 		2F091E491F8B4B590053E642 /* RST_SimplifiedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E481F8B4B590053E642 /* RST_SimplifiedUITests.swift */; };
+		2F091E571F8B907C0053E642 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E561F8B907C0053E642 /* HomeScreenViewController.swift */; };
+		2FF074F21FA1F887006F88E8 /* FirstScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF074F11FA1F887006F88E8 /* FirstScreenViewController.m */; };
+		9D23780BFD9BAF3A4CD6D0BB /* Pods_RST_Simplified.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AACA22F1EB4A3A5C8CCFB53 /* Pods_RST_Simplified.framework */; };
+		B700201787B54A7A961F1AA2 /* Pods_RST_SimplifiedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */; };
+		EDFC383A11BC55AFF6E38E47 /* Pods_RST_SimplifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE904AC5F822DDA96FF5E87 /* Pods_RST_SimplifiedTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11CD20CF87586656CD3B1110 /* Pods-RST SimplifiedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F091E251F8B4B590053E642 /* RST Simplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RST Simplified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E281F8B4B590053E642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F091E2A1F8B4B590053E642 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,18 @@
 		2F091E441F8B4B590053E642 /* RST SimplifiedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RST SimplifiedUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E481F8B4B590053E642 /* RST_SimplifiedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RST_SimplifiedUITests.swift; sourceTree = "<group>"; };
 		2F091E4A1F8B4B590053E642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F091E561F8B907C0053E642 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		2FF074EF1FA1F886006F88E8 /* RST Simplified-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RST Simplified-Bridging-Header.h"; sourceTree = "<group>"; };
+		2FF074F01FA1F887006F88E8 /* FirstScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstScreenViewController.h; sourceTree = "<group>"; };
+		2FF074F11FA1F887006F88E8 /* FirstScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstScreenViewController.m; sourceTree = "<group>"; };
+		30038440918166AE6BE8EDEF /* Pods-RST SimplifiedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.release.xcconfig"; sourceTree = "<group>"; };
+		307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RST_SimplifiedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38FE6853BF0F0ED71FF35616 /* Pods-RST Simplified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST Simplified.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified.release.xcconfig"; sourceTree = "<group>"; };
+		629A5A67920861B691128CAB /* Pods-RST Simplified.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST Simplified.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified.debug.xcconfig"; sourceTree = "<group>"; };
+		8DE904AC5F822DDA96FF5E87 /* Pods_RST_SimplifiedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RST_SimplifiedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A1B87A8A9FBBC63C8B2AF3E /* Pods-RST SimplifiedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedTests/Pods-RST SimplifiedTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9AACA22F1EB4A3A5C8CCFB53 /* Pods_RST_Simplified.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RST_Simplified.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0850368C260B9D838C03B14 /* Pods-RST SimplifiedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedTests/Pods-RST SimplifiedTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D23780BFD9BAF3A4CD6D0BB /* Pods_RST_Simplified.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFC383A11BC55AFF6E38E47 /* Pods_RST_SimplifiedTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +88,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B700201787B54A7A961F1AA2 /* Pods_RST_SimplifiedUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17032FF6362457D1620134F4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				629A5A67920861B691128CAB /* Pods-RST Simplified.debug.xcconfig */,
+				38FE6853BF0F0ED71FF35616 /* Pods-RST Simplified.release.xcconfig */,
+				9A1B87A8A9FBBC63C8B2AF3E /* Pods-RST SimplifiedTests.debug.xcconfig */,
+				F0850368C260B9D838C03B14 /* Pods-RST SimplifiedTests.release.xcconfig */,
+				11CD20CF87586656CD3B1110 /* Pods-RST SimplifiedUITests.debug.xcconfig */,
+				30038440918166AE6BE8EDEF /* Pods-RST SimplifiedUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2F091E1C1F8B4B590053E642 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +115,8 @@
 				2F091E3C1F8B4B590053E642 /* RST SimplifiedTests */,
 				2F091E471F8B4B590053E642 /* RST SimplifiedUITests */,
 				2F091E261F8B4B590053E642 /* Products */,
+				17032FF6362457D1620134F4 /* Pods */,
+				47F4A983F69DF91889E69D03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +135,14 @@
 			children = (
 				2F091E281F8B4B590053E642 /* AppDelegate.swift */,
 				2F091E2A1F8B4B590053E642 /* ViewController.swift */,
+				2FF074F01FA1F887006F88E8 /* FirstScreenViewController.h */,
+				2FF074F11FA1F887006F88E8 /* FirstScreenViewController.m */,
 				2F091E2C1F8B4B590053E642 /* Main.storyboard */,
+				2F091E561F8B907C0053E642 /* HomeScreenViewController.swift */,
 				2F091E2F1F8B4B590053E642 /* Assets.xcassets */,
 				2F091E311F8B4B590053E642 /* LaunchScreen.storyboard */,
 				2F091E341F8B4B590053E642 /* Info.plist */,
+				2FF074EF1FA1F886006F88E8 /* RST Simplified-Bridging-Header.h */,
 			);
 			path = "RST Simplified";
 			sourceTree = "<group>";
@@ -125,6 +165,16 @@
 			path = "RST SimplifiedUITests";
 			sourceTree = "<group>";
 		};
+		47F4A983F69DF91889E69D03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AACA22F1EB4A3A5C8CCFB53 /* Pods_RST_Simplified.framework */,
+				8DE904AC5F822DDA96FF5E87 /* Pods_RST_SimplifiedTests.framework */,
+				307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F091E4D1F8B4B590053E642 /* Build configuration list for PBXNativeTarget "RST Simplified" */;
 			buildPhases = (
+				56EC7390E7FA142FDEABC2C0 /* [CP] Check Pods Manifest.lock */,
 				2F091E211F8B4B590053E642 /* Sources */,
 				2F091E221F8B4B590053E642 /* Frameworks */,
 				2F091E231F8B4B590053E642 /* Resources */,
+				8FD94CE7CB7CBBD7FB850656 /* [CP] Embed Pods Frameworks */,
+				28337059D414EF75F576399D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F091E501F8B4B590053E642 /* Build configuration list for PBXNativeTarget "RST SimplifiedTests" */;
 			buildPhases = (
+				398229E65CCB1B6D04B6B6C7 /* [CP] Check Pods Manifest.lock */,
 				2F091E351F8B4B590053E642 /* Sources */,
 				2F091E361F8B4B590053E642 /* Frameworks */,
 				2F091E371F8B4B590053E642 /* Resources */,
+				3205185C54B2337C5A6134C7 /* [CP] Embed Pods Frameworks */,
+				6A2ABEA3605F7C82DED9CD8A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +223,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F091E531F8B4B590053E642 /* Build configuration list for PBXNativeTarget "RST SimplifiedUITests" */;
 			buildPhases = (
+				0474400676C326BA942553D6 /* [CP] Check Pods Manifest.lock */,
 				2F091E401F8B4B590053E642 /* Sources */,
 				2F091E411F8B4B590053E642 /* Frameworks */,
 				2F091E421F8B4B590053E642 /* Resources */,
+				46E072273A8598A63B1C8738 /* [CP] Embed Pods Frameworks */,
+				22BC79737562ECA9523BF4F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +252,7 @@
 				TargetAttributes = {
 					2F091E241F8B4B590053E642 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					2F091E381F8B4B590053E642 = {
@@ -254,13 +314,173 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0474400676C326BA942553D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RST SimplifiedUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22BC79737562ECA9523BF4F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28337059D414EF75F576399D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3205185C54B2337C5A6134C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RST SimplifiedTests/Pods-RST SimplifiedTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		398229E65CCB1B6D04B6B6C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RST SimplifiedTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46E072273A8598A63B1C8738 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56EC7390E7FA142FDEABC2C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RST Simplified-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A2ABEA3605F7C82DED9CD8A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RST SimplifiedTests/Pods-RST SimplifiedTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FD94CE7CB7CBBD7FB850656 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F091E211F8B4B590053E642 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2F091E2B1F8B4B590053E642 /* ViewController.swift in Sources */,
+				2FF074F21FA1F887006F88E8 /* FirstScreenViewController.m in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
+				2F091E571F8B907C0053E642 /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,14 +644,19 @@
 		};
 		2F091E4E1F8B4B590053E642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 629A5A67920861B691128CAB /* Pods-RST Simplified.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XVB5V247FL;
 				INFOPLIST_FILE = "RST Simplified/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "international.rst.com.rstsimplified.RST-Simplified";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RST Simplified/RST Simplified-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -439,14 +664,18 @@
 		};
 		2F091E4F1F8B4B590053E642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38FE6853BF0F0ED71FF35616 /* Pods-RST Simplified.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XVB5V247FL;
 				INFOPLIST_FILE = "RST Simplified/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "international.rst.com.rstsimplified.RST-Simplified";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RST Simplified/RST Simplified-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,6 +683,7 @@
 		};
 		2F091E511F8B4B590053E642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A1B87A8A9FBBC63C8B2AF3E /* Pods-RST SimplifiedTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -471,6 +701,7 @@
 		};
 		2F091E521F8B4B590053E642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0850368C260B9D838C03B14 /* Pods-RST SimplifiedTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -488,6 +719,7 @@
 		};
 		2F091E541F8B4B590053E642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11CD20CF87586656CD3B1110 /* Pods-RST SimplifiedUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -504,6 +736,7 @@
 		};
 		2F091E551F8B4B590053E642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30038440918166AE6BE8EDEF /* Pods-RST SimplifiedUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
