@@ -1,14 +1,14 @@
 //
-//  HomeScreenViewController.swift
+//  ChooseVisaTypeViewController.swift
 //  RST Simplified
 //
-//  Created by RSTI E-Services on 09/10/17.
+//  Created by RSTI E-Services on 27/10/17.
 //  Copyright © 2017 RSTI E-Services. All rights reserved.
 //
 
 import UIKit
 
-class HomeScreenViewController: UIViewController {
+class ChooseVisaTypeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
