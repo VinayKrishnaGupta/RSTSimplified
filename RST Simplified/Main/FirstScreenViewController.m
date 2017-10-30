@@ -11,6 +11,15 @@
 @interface FirstScreenViewController () {
     UIImageView *bgImageView;
     float width;
+    __weak IBOutlet UIImageView *VisaImageView;
+    __weak IBOutlet UIImageView *ImmigrationImageView;
+    __weak IBOutlet UIImageView *StudentServicesImageView;
+    __weak IBOutlet UIImageView *AttestationImageView;
+    __weak IBOutlet UIImageView *AirportServicesImageView;
+    __weak IBOutlet UIImageView *PassportServicesImageView;
+    
+    
+    
 }
 
 @end
@@ -25,7 +34,7 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
-    
+    [self SetupTapGuestures];
     // Do any additional setup after loading the view.
 }
 
@@ -33,6 +42,54 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)SetupTapGuestures {
+    
+    UITapGestureRecognizer *VisaTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(VisaButton)];
+    VisaTap.numberOfTapsRequired = 1;
+    [VisaImageView setUserInteractionEnabled:YES];
+    [VisaImageView addGestureRecognizer:VisaTap];
+    
+    
+    UITapGestureRecognizer *ImmigrationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    ImmigrationTap.numberOfTapsRequired = 1;
+    [ImmigrationImageView setUserInteractionEnabled:YES];
+    [ImmigrationImageView addGestureRecognizer:ImmigrationTap];
+    
+    UITapGestureRecognizer *StudentTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    StudentTap.numberOfTapsRequired = 1;
+    [StudentServicesImageView setUserInteractionEnabled:YES];
+    [StudentServicesImageView addGestureRecognizer:StudentTap];
+    
+    UITapGestureRecognizer *AttestationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    AttestationTap.numberOfTapsRequired = 1;
+    [AttestationImageView setUserInteractionEnabled:YES];
+    [AttestationImageView addGestureRecognizer:AttestationTap];
+    
+    UITapGestureRecognizer *AirportTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    AirportTap.numberOfTapsRequired = 1;
+    [AirportServicesImageView setUserInteractionEnabled:YES];
+    [AirportServicesImageView addGestureRecognizer:AirportTap];
+    
+    UITapGestureRecognizer *PassportTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    PassportTap.numberOfTapsRequired = 1;
+    [PassportServicesImageView setUserInteractionEnabled:YES];
+    [PassportServicesImageView addGestureRecognizer:PassportTap];
+   
+    
+}
+
+-(void)tapDetected{
+    NSLog(@"single Tap on imageview");
+}
+
+
+-(void)VisaButton {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Visa" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseVisatype"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
 -(void)addAnimatingBackground {
     
     

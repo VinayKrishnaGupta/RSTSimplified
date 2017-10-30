@@ -13,7 +13,7 @@
         <!--Choose Visa Type View Controller-->
         <scene sceneID="415-pe-p2m">
             <objects>
-                <viewController id="NUQ-ky-QqF" customClass="ChooseVisaTypeViewController" customModule="RST_Simplified" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chooseVisatype" id="NUQ-ky-QqF" customClass="ChooseVisaTypeViewController" customModule="RST_Simplified" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CUG-eF-QJa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,6 +50,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="gYU-cu-fVu"/>
                     </view>
+                    <connections>
+                        <outlet property="CitizenOfField" destination="6Yz-nJ-hoR" id="C3G-Tu-DXy"/>
+                        <outlet property="LivingInField" destination="dk3-Cq-FtG" id="3t8-iP-8ut"/>
+                        <outlet property="StateField" destination="4bb-Db-nNc" id="QUo-OX-9gT"/>
+                        <outlet property="VisaRequiredForField" destination="gWU-AD-Xve" id="ybd-ob-gSx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaG-Po-I5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
