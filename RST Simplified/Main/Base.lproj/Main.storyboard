@@ -179,7 +179,7 @@
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="a1y-Eg-7er" rowHeight="60" style="IBUITableViewCellStyleDefault" id="JZa-QU-fLS">
-                                        <rect key="frame" x="0.0" y="55.5" width="343" height="60"/>
+                                        <rect key="frame" x="0.0" y="56" width="343" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JZa-QU-fLS" id="FyA-u8-Jxp">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>

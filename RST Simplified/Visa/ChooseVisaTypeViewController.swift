@@ -29,7 +29,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         CitizenOfField.delegate = self
         LivingInField.delegate = self
         StateField.delegate = self
-        
+        self.SetupDropDowns()
 
         // Do any additional setup after loading the view.
     }
@@ -52,7 +52,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             
             [unowned self] (index: Int, item: String) in
             self.VisaRequiredForField.text = "  " + item
-            self.VisaRequiredDropdown.hide()
+           
             
         }
         
@@ -89,6 +89,39 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func ProceedButton(_ sender: UIButton) {
+        self.SearchButtonMethod()
+    }
+    func SearchButtonMethod() {
+      self.performSegue(withIdentifier: "visaWebView", sender: nil)
+        
+        
+    }
+    
+    func getListofState(){
+        let APIsession : APIHandler = APIHandler()
+        
+        
+        APIsession.getDatafromAPI("GET", "specialist", nil) { (response, error) in
+            if (response != nil) {
+                print(response as Any)
+                
+                
+            }
+            else {
+                
+                print("Error is \(String(describing: error))")
+                
+            }
+        }
+        
+        
+        
+
+        
+    }
+    
+    
     
 
     /*
