@@ -8,7 +8,7 @@ pod 'DropDown'
 pod 'SVProgressHUD'
 pod 'SDWebImage', '~>3.8'
 pod 'SideMenuController'
-
+pod 'Alamofire'
 use_frameworks!
 
   # Pods for RST Simplified

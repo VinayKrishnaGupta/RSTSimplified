@@ -8,6 +8,7 @@
 
 import UIKit
 import DropDown
+import Alamofire
 
 class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var VisaRequiredForField: UITextField!
@@ -22,6 +23,8 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     let CitizenDropdown = DropDown()
     let LivingInDropdown = DropDown()
     let StateDropdown = DropDown()
+    var CountryList = Array<Any>()
+    var CountryNamesList = Array<String>()
     let listofsampledata = ["A","B","C","D"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +36,29 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.getListofCountries()
+    }
+    
+    
     
     func SetupDropDowns() {
         VisaRequiredDropdown.anchorView = VisaRequiredForField
         VisaRequiredDropdown.dataSource = listofsampledata
-        VisaRequiredDropdown.direction = .any
+        VisaRequiredDropdown.direction = .bottom
        
         
-        CitizenDropdown.anchorView = CitizenDropdown
+        CitizenDropdown.anchorView = CitizenOfField
         CitizenDropdown.dataSource = listofsampledata
-        CitizenDropdown.direction = .any
+        CitizenDropdown.direction = .bottom
         
         LivingInDropdown.anchorView = LivingInField
         LivingInDropdown.dataSource = listofsampledata
-        LivingInDropdown.direction = .any
+        LivingInDropdown.direction = .bottom
+        
+        StateDropdown.anchorView = StateField
+        StateDropdown.dataSource = listofsampledata
+        StateDropdown.direction = .bottom
         
         VisaRequiredDropdown.selectionAction = {
             
@@ -55,12 +67,54 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
            
             
         }
+        CitizenDropdown.selectionAction = {
+            
+            [unowned self] (index: Int, item: String) in
+            self.CitizenOfField.text = "  " + item
+            
+            
+        }
+        LivingInDropdown.selectionAction = {
+            
+            [unowned self] (index: Int, item: String) in
+            self.LivingInField.text = "  " + item
+            
+            
+        }
+        StateDropdown.selectionAction = {
+            
+            [unowned self] (index: Int, item: String) in
+            self.StateField.text = "  " + item
+            
+            
+        }
         
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == VisaRequiredForField {
             VisaRequiredDropdown.show()
+            return false
+        }
+        if textField == LivingInField {
+            LivingInDropdown.show()
+            VisaRequiredDropdown.hide()
+            CitizenDropdown.hide()
+            StateDropdown.hide()
+            return false
+        }
+        if textField == CitizenOfField {
+            LivingInDropdown.hide()
+            VisaRequiredDropdown.hide()
+            CitizenDropdown.show()
+            StateDropdown.hide()
+            return false
+        }
+        if textField == StateField {
+            LivingInDropdown.hide()
+            VisaRequiredDropdown.hide()
+            CitizenDropdown.hide()
+            StateDropdown.show()
             return false
         }
         else {
@@ -73,15 +127,12 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField == VisaRequiredForField {
-            VisaRequiredDropdown.hide()
-            return false
-        }
-        else {
-            return true
-        }
+        LivingInDropdown.hide()
+        VisaRequiredDropdown.hide()
+        CitizenDropdown.hide()
+        StateDropdown.hide()
         
-        
+        return false
     }
     
 
@@ -98,23 +149,55 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func getListofState(){
-        let APIsession : APIHandler = APIHandler()
+    func getListofCountries(){
         
         
-        APIsession.getDatafromAPI("GET", "specialist", nil) { (response, error) in
-            if (response != nil) {
-                print(response as Any)
+        Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId=")!, method: .get, parameters: nil, headers: nil )
+            
+            
+            .responseJSON { response in
+                debugPrint(response)
                 
                 
-            }
-            else {
+                if let json = response.result.value {
+                    let dict = json as! NSDictionary
+                    self.CountryList = dict.value(forKeyPath: "country") as! [Any]
+                    self.CountryNamesList = dict.value(forKeyPath: "country.countryName") as! [String]
+                    self.VisaRequiredDropdown.dataSource = self.CountryNamesList
+                    self.CitizenDropdown.dataSource = self.CountryNamesList
+                    self.LivingInDropdown.dataSource = self.CountryNamesList
+                    print(dict)
+                }
+                else {
+                    print("Error")
+                }
                 
-                print("Error is \(String(describing: error))")
-                
-            }
         }
+       
         
+        
+        
+    }
+    
+    func getListofState(){
+        
+        Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId=")!, method: .get, parameters: nil, headers: nil )
+            
+            
+            .responseJSON { response in
+                debugPrint(response)
+                
+                
+                if let json = response.result.value {
+                    let dict = json as! NSDictionary
+                   
+                    print(dict)
+                }
+                else {
+                    print("Error")
+                }
+                
+        }
         
         
 
