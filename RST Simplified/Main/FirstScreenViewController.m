@@ -42,6 +42,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)viewWillAppear:(BOOL)animated {
+   
+    
+}
+
 -(void)SetupTapGuestures {
     
     UITapGestureRecognizer *VisaTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(VisaButton)];
@@ -86,6 +91,15 @@
 -(void)VisaButton {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Visa" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseVisatype"];
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor orangeColor];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
+   
+    
+    
     [self.navigationController pushViewController:vc animated:YES];
     
 }

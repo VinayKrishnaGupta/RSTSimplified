@@ -9,6 +9,7 @@
 import UIKit
 import DropDown
 import Alamofire
+import MRProgress
 
 class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var VisaRequiredForField: UITextField!
@@ -24,8 +25,17 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     let LivingInDropdown = DropDown()
     let StateDropdown = DropDown()
     var CountryList = Array<Any>()
+    var StateList = Array <Any>()
+    var StateListNames = Array<String>()
     var CountryNamesList = Array<String>()
+    var SelectedLivingInCountryID = String()
     let listofsampledata = ["A","B","C","D"]
+    
+    var SelectedCitizenOf = String()
+    var SelectedDestination = String()
+    var SelectedLivingInCountry = String()
+    var SelectedLivinginState = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         VisaRequiredForField.delegate = self
@@ -33,11 +43,23 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         LivingInField.delegate = self
         StateField.delegate = self
         self.SetupDropDowns()
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        
 
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         self.getListofCountries()
+     //   MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+       
+       let overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, title: "Loading Countries", mode:.indeterminate, animated: true)
+        overlay?.tintColor = UIColor.blue
+        overlay?.titleLabel.textColor = UIColor.blue
+        overlay?.show(true)
+        
+        
+        
+       
     }
     
     
@@ -64,13 +86,14 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             
             [unowned self] (index: Int, item: String) in
             self.VisaRequiredForField.text = "  " + item
-           
+           self.SelectedDestination = item.replacingOccurrences(of: " ", with: "-")
             
         }
         CitizenDropdown.selectionAction = {
             
             [unowned self] (index: Int, item: String) in
             self.CitizenOfField.text = "  " + item
+            self.SelectedCitizenOf = item.replacingOccurrences(of: " ", with: "-")
             
             
         }
@@ -78,13 +101,17 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             
             [unowned self] (index: Int, item: String) in
             self.LivingInField.text = "  " + item
-            
+            self.SelectedLivingInCountry = item.replacingOccurrences(of: " ", with: "-")
+            let dict : NSDictionary = self.CountryList[index] as! NSDictionary
+            self.SelectedLivingInCountryID = dict.value(forKey: "countryid") as! String
+            self.getListofState()
             
         }
         StateDropdown.selectionAction = {
             
             [unowned self] (index: Int, item: String) in
             self.StateField.text = "  " + item
+            self.SelectedLivinginState = item.replacingOccurrences(of: " ", with: "-")
             
             
         }
@@ -144,7 +171,16 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         self.SearchButtonMethod()
     }
     func SearchButtonMethod() {
-      self.performSegue(withIdentifier: "visaWebView", sender: nil)
+        
+        if SelectedCitizenOf == "Indonesia" {
+            self.performSegue(withIdentifier: "indonesiaRGT", sender: nil)
+        }
+        
+        
+        else {
+             self.performSegue(withIdentifier: "rgtvisa", sender: nil)
+        }
+     
         
         
     }
@@ -181,7 +217,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     
     func getListofState(){
         
-        Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId=")!, method: .get, parameters: nil, headers: nil )
+        Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?type=State&countryid=\(SelectedLivingInCountryID)")!, method: .get, parameters: nil, headers: nil )
             
             
             .responseJSON { response in
@@ -190,7 +226,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                 
                 if let json = response.result.value {
                     let dict = json as! NSDictionary
-                   
+                    self.StateList = dict.value(forKey: "state") as! [Any]
+                    self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String] 
+                    self.StateDropdown.dataSource = self.StateListNames
                     print(dict)
                 }
                 else {
@@ -202,6 +240,22 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         
 
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "rgtvisa" {
+            let RGTVC = segue.destination as! RTGVisasViewController
+            RGTVC.Citizenof = self.SelectedCitizenOf
+            RGTVC.DestinationCountry = self.SelectedDestination
+            RGTVC.LivingInCountry = self.SelectedLivingInCountry
+            RGTVC.livingInState = self.SelectedLivinginState
+        }
+        
+        if segue.identifier == "indonesiaRGT" {
+            let IndonesiaVC = segue.destination as! IndoesiaVisaRGTViewController
+            IndonesiaVC.DestinationCountry = self.SelectedDestination
+            IndonesiaVC.StateofIndonesia = self.SelectedLivinginState
+        }
     }
     
     

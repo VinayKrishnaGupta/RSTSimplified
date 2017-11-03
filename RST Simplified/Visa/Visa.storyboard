@@ -67,11 +67,43 @@
                         <outlet property="StateField" destination="4bb-Db-nNc" id="QUo-OX-9gT"/>
                         <outlet property="VisaRequiredForField" destination="gWU-AD-Xve" id="ybd-ob-gSx"/>
                         <segue destination="5zL-Er-Q4i" kind="show" identifier="visaWebView" id="XLu-6V-ozR"/>
+                        <segue destination="J91-R4-Uxg" kind="show" identifier="rgtvisa" id="XUw-Fv-4Zt"/>
+                        <segue destination="6vL-1Z-U72" kind="show" identifier="indonesiaRGT" id="AP3-19-t9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaG-Po-I5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="112.8" y="179.46026986506749"/>
+        </scene>
+        <!--Indoesia VisaRGT View Controller-->
+        <scene sceneID="A1s-cj-m8m">
+            <objects>
+                <viewController id="6vL-1Z-U72" customClass="IndoesiaVisaRGTViewController" customModule="RST_Simplified" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bwe-cG-rga">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="ET7-ga-eTv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w79-Rm-sBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="220" y="1043"/>
+        </scene>
+        <!--Visas View Controller-->
+        <scene sceneID="aq0-9V-EbS">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="J91-R4-Uxg" customClass="RGTVisasViewController" customModule="RST_Simplified" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v7m-vi-Rei">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Iax-sP-TqY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZb-lA-oaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="550"/>
         </scene>
         <!--Visa1 Web View Controller-->
         <scene sceneID="T02-hu-3Vi">
@@ -86,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9LW-E1-0ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1004" y="181.25937031484258"/>
+            <point key="canvasLocation" x="990" y="-161"/>
         </scene>
     </scenes>
 </document>

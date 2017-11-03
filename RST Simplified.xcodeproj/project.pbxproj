@@ -20,6 +20,8 @@
 		2FF074FA1FA30338006F88E8 /* Visa.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF074F91FA30338006F88E8 /* Visa.storyboard */; };
 		2FFCBAC11FA8500200B28801 /* Visa1WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC01FA8500200B28801 /* Visa1WebViewController.swift */; };
 		2FFCBAC41FA88D9300B28801 /* APIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC21FA88D9300B28801 /* APIHandler.m */; };
+		2FFCBAC71FAB18C700B28801 /* RTGVisasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC61FAB18C700B28801 /* RTGVisasViewController.swift */; };
+		2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */; };
 		9D23780BFD9BAF3A4CD6D0BB /* Pods_RST_Simplified.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AACA22F1EB4A3A5C8CCFB53 /* Pods_RST_Simplified.framework */; };
 		B700201787B54A7A961F1AA2 /* Pods_RST_SimplifiedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */; };
 		EDFC383A11BC55AFF6E38E47 /* Pods_RST_SimplifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE904AC5F822DDA96FF5E87 /* Pods_RST_SimplifiedTests.framework */; };
@@ -67,6 +69,8 @@
 		2FFCBAC21FA88D9300B28801 /* APIHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIHandler.m; sourceTree = "<group>"; };
 		2FFCBAC31FA88D9300B28801 /* APIHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIHandler.h; sourceTree = "<group>"; };
 		2FFCBAC51FA8923D00B28801 /* SharedValues.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedValues.pch; sourceTree = "<group>"; };
+		2FFCBAC61FAB18C700B28801 /* RTGVisasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTGVisasViewController.swift; sourceTree = "<group>"; };
+		2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoesiaVisaRGTViewController.swift; sourceTree = "<group>"; };
 		30038440918166AE6BE8EDEF /* Pods-RST SimplifiedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.release.xcconfig"; sourceTree = "<group>"; };
 		307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RST_SimplifiedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FE6853BF0F0ED71FF35616 /* Pods-RST Simplified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST Simplified.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				2FF074F71FA30322006F88E8 /* ChooseVisaTypeViewController.swift */,
 				2FF074F91FA30338006F88E8 /* Visa.storyboard */,
 				2FFCBAC01FA8500200B28801 /* Visa1WebViewController.swift */,
+				2FFCBAC61FAB18C700B28801 /* RTGVisasViewController.swift */,
+				2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */,
 			);
 			path = Visa;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework",
@@ -520,6 +527,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuController.framework",
@@ -537,12 +545,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FF074F21FA1F887006F88E8 /* FirstScreenViewController.m in Sources */,
+				2FFCBAC71FAB18C700B28801 /* RTGVisasViewController.swift in Sources */,
 				2FA0AB8D1FA31B3900F9F040 /* CustomSideMenuViewController.swift in Sources */,
 				2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
 				2FFCBAC11FA8500200B28801 /* Visa1WebViewController.swift in Sources */,
 				2FF074F81FA30322006F88E8 /* ChooseVisaTypeViewController.swift in Sources */,
 				2FFCBAC41FA88D9300B28801 /* APIHandler.m in Sources */,
+				2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

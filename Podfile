@@ -9,6 +9,7 @@ pod 'SVProgressHUD'
 pod 'SDWebImage', '~>3.8'
 pod 'SideMenuController'
 pod 'Alamofire'
+pod 'MRProgress'
 use_frameworks!
 
   # Pods for RST Simplified
