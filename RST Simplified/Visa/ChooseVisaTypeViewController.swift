@@ -36,15 +36,40 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     var SelectedLivingInCountry = String()
     var SelectedLivinginState = String()
     
+     var overlay = MRProgressOverlayView()
     override func viewDidLoad() {
         super.viewDidLoad()
         VisaRequiredForField.delegate = self
         CitizenOfField.delegate = self
         LivingInField.delegate = self
         StateField.delegate = self
-        self.SetupDropDowns()
-        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        VisaRequiredForField.layer.cornerRadius = 10
+        VisaRequiredForField.layer.borderColor = UIColor.darkGray.cgColor
+        VisaRequiredForField.layer.borderWidth = 0.5
+        VisaRequiredForField.layer.masksToBounds = true
         
+        CitizenOfField.layer.cornerRadius = 10
+        CitizenOfField.layer.borderColor = UIColor.darkGray.cgColor
+        CitizenOfField.layer.borderWidth = 0.5
+        CitizenOfField.layer.masksToBounds = true
+        
+        LivingInField.layer.cornerRadius = 10
+        LivingInField.layer.borderColor = UIColor.darkGray.cgColor
+        LivingInField.layer.borderWidth = 0.5
+        LivingInField.layer.masksToBounds = true
+        
+        StateField.layer.cornerRadius = 10
+        StateField.layer.borderColor = UIColor.darkGray.cgColor
+        StateField.layer.borderWidth = 0.5
+        StateField.layer.masksToBounds = true
+        
+        
+        
+        
+        self.SetupDropDowns()
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 232/256, green: 105/256, blue: 40/256, alpha: 1)
+      
+        self.setupDownArrowinDropdowns()
 
         // Do any additional setup after loading the view.
     }
@@ -52,14 +77,59 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         self.getListofCountries()
      //   MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
        
-       let overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, title: "Loading Countries", mode:.indeterminate, animated: true)
-        overlay?.tintColor = UIColor.blue
-        overlay?.titleLabel.textColor = UIColor.blue
-        overlay?.show(true)
+       
+//        
+//        
+        
+     overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        overlay.tintColor = UIColor.lightGray
+        overlay.titleLabel.textColor = UIColor.darkGray
+        overlay.show(true)
         
         
         
        
+    }
+    
+    func setupDownArrowinDropdowns() {
+        VisaRequiredForField.rightViewMode = .always
+        LivingInField.rightViewMode = .always
+        CitizenOfField.rightViewMode = .always
+        StateField.rightViewMode = .always
+        
+        let rightView = UIView.init(frame: CGRect(x: 0, y: 5, width: 30, height: 30))
+        let rightView1 = UIView.init(frame: CGRect(x: 0, y: 5, width: 30, height: 30))
+        let rightView2 = UIView.init(frame: CGRect(x: 0, y: 5, width: 30, height: 30))
+        let rightView3 = UIView.init(frame: CGRect(x: 0, y: 5, width: 30, height: 30))
+        let imageName = "downarrow"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: 0, y: 5, width: 15, height: 15)
+        rightView.addSubview(imageView)
+        
+        let imageName1 = "downarrow"
+        let image1 = UIImage(named: imageName1)
+        let imageView1 = UIImageView(image: image1!)
+        imageView1.frame = CGRect(x: 0, y: 5, width: 15, height: 15)
+        rightView1.addSubview(imageView1)
+        
+        let imageName2 = "downarrow"
+        let image2 = UIImage(named: imageName2)
+        let imageView2 = UIImageView(image: image2!)
+        imageView2.frame = CGRect(x: 0, y: 5, width: 15, height: 15)
+        rightView2.addSubview(imageView2)
+        
+        let imageName3 = "downarrow"
+        let image3 = UIImage(named: imageName3)
+        let imageView3 = UIImageView(image: image3!)
+        imageView3.frame = CGRect(x: 0, y: 5, width: 15, height: 15)
+        rightView3.addSubview(imageView3)
+        
+        
+        VisaRequiredForField.rightView = rightView
+        LivingInField.rightView = rightView1
+        CitizenOfField.rightView = rightView2
+        StateField.rightView = rightView3
     }
     
     
@@ -176,6 +246,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             self.performSegue(withIdentifier: "indonesiaRGT", sender: nil)
         }
         
+        if SelectedDestination == "United-Arab-Emirates" {
+            self.performSegue(withIdentifier: "visaWebView", sender: nil)
+        }
         
         else {
              self.performSegue(withIdentifier: "rgtvisa", sender: nil)
@@ -202,6 +275,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                     self.VisaRequiredDropdown.dataSource = self.CountryNamesList
                     self.CitizenDropdown.dataSource = self.CountryNamesList
                     self.LivingInDropdown.dataSource = self.CountryNamesList
+                     self.overlay.dismiss(true)
                     print(dict)
                 }
                 else {
@@ -229,6 +303,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                     self.StateList = dict.value(forKey: "state") as! [Any]
                     self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String] 
                     self.StateDropdown.dataSource = self.StateListNames
+                   
                     print(dict)
                 }
                 else {
@@ -256,6 +331,17 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             IndonesiaVC.DestinationCountry = self.SelectedDestination
             IndonesiaVC.StateofIndonesia = self.SelectedLivinginState
         }
+        if segue.identifier == "visaWebView" {
+            let OtherVisaVC = segue.destination as! Visa1WebViewController
+            if SelectedDestination == "United-Arab-Emirates" {
+                OtherVisaVC.URLstring = "https://uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                
+            }
+            
+            
+            
+        }
+        
     }
     
     

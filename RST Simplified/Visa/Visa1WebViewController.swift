@@ -11,7 +11,7 @@ import WebKit
 
 class Visa1WebViewController: UIViewController, WKUIDelegate {
     var webView: WKWebView!
-    
+    public var URLstring = String()
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -21,10 +21,24 @@ class Visa1WebViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let myURL = URL(string: "https://www.rtgvisas-indonesia.com")
+        let myURL = URL(string: URLstring)
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        webView.evaluateJavaScript("javascript:(function() { " +
+            "var set = document.getElementsByTagName('wrap');"
+            + "set[0].style.margin = '0px';" +
+            "})()"
+) { (result, error) in
+            print(error)
+            print(result)
+        }
+       
+        
+        
+    }
+
     
 }

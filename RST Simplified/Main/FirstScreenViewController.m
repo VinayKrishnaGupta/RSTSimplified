@@ -89,13 +89,14 @@
 
 
 -(void)VisaButton {
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Visa" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseVisatype"];
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.view.backgroundColor = [UIColor orangeColor];
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
     self.navigationController.view.tintColor = [UIColor whiteColor];
    
     
