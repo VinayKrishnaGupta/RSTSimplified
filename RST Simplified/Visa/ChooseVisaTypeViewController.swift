@@ -247,11 +247,19 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         }
         
         if SelectedDestination == "United-Arab-Emirates" {
-            self.performSegue(withIdentifier: "visaWebView", sender: nil)
+         //   self.performSegue(withIdentifier: "visaWebView", sender: nil)
+            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://uaevisa-online.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
         
         else {
-             self.performSegue(withIdentifier: "rgtvisa", sender: nil)
+//            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
+            
+        self.performSegue(withIdentifier: "rgtvisa", sender: nil)
         }
      
         
@@ -334,7 +342,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "visaWebView" {
             let OtherVisaVC = segue.destination as! Visa1WebViewController
             if SelectedDestination == "United-Arab-Emirates" {
-                OtherVisaVC.URLstring = "https://uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                OtherVisaVC.URLstring = "https://m.uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
                 
             }
             

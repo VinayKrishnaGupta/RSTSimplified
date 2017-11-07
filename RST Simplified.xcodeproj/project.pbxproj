@@ -22,6 +22,8 @@
 		2FFCBAC41FA88D9300B28801 /* APIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC21FA88D9300B28801 /* APIHandler.m */; };
 		2FFCBAC71FAB18C700B28801 /* RTGVisasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC61FAB18C700B28801 /* RTGVisasViewController.swift */; };
 		2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */; };
+		2FFCBACC1FB1A8D200B28801 /* WebviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBACA1FB1A8D100B28801 /* WebviewViewController.swift */; };
+		2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFCBACB1FB1A8D100B28801 /* WebviewViewController.xib */; };
 		9D23780BFD9BAF3A4CD6D0BB /* Pods_RST_Simplified.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AACA22F1EB4A3A5C8CCFB53 /* Pods_RST_Simplified.framework */; };
 		B700201787B54A7A961F1AA2 /* Pods_RST_SimplifiedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */; };
 		EDFC383A11BC55AFF6E38E47 /* Pods_RST_SimplifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE904AC5F822DDA96FF5E87 /* Pods_RST_SimplifiedTests.framework */; };
@@ -71,6 +73,8 @@
 		2FFCBAC51FA8923D00B28801 /* SharedValues.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedValues.pch; sourceTree = "<group>"; };
 		2FFCBAC61FAB18C700B28801 /* RTGVisasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTGVisasViewController.swift; sourceTree = "<group>"; };
 		2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoesiaVisaRGTViewController.swift; sourceTree = "<group>"; };
+		2FFCBACA1FB1A8D100B28801 /* WebviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewViewController.swift; sourceTree = "<group>"; };
+		2FFCBACB1FB1A8D100B28801 /* WebviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebviewViewController.xib; sourceTree = "<group>"; };
 		30038440918166AE6BE8EDEF /* Pods-RST SimplifiedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.release.xcconfig"; sourceTree = "<group>"; };
 		307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RST_SimplifiedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FE6853BF0F0ED71FF35616 /* Pods-RST Simplified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST Simplified.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				2FFCBAC01FA8500200B28801 /* Visa1WebViewController.swift */,
 				2FFCBAC61FAB18C700B28801 /* RTGVisasViewController.swift */,
 				2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */,
+				2FFCBACA1FB1A8D100B28801 /* WebviewViewController.swift */,
+				2FFCBACB1FB1A8D100B28801 /* WebviewViewController.xib */,
 			);
 			path = Visa;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */,
 				2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */,
 				2FF074FA1FA30338006F88E8 /* Visa.storyboard in Resources */,
 				2F091E301F8B4B590053E642 /* Assets.xcassets in Resources */,
@@ -550,6 +557,7 @@
 				2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
 				2FFCBAC11FA8500200B28801 /* Visa1WebViewController.swift in Sources */,
+				2FFCBACC1FB1A8D200B28801 /* WebviewViewController.swift in Sources */,
 				2FF074F81FA30322006F88E8 /* ChooseVisaTypeViewController.swift in Sources */,
 				2FFCBAC41FA88D9300B28801 /* APIHandler.m in Sources */,
 				2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */,
