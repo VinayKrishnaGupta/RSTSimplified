@@ -253,13 +253,26 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
+            
+        if SelectedDestination == "Singapore" {
+            //https://m.singaporevisa-online.org/
+            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://singaporevisa-online.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
         
         else {
 //            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
 //            self.navigationController?.pushViewController(vc, animated: true)
+            if SelectedLivinginState != "" {
+                self.performSegue(withIdentifier: "rgtvisa", sender: nil)
+            }
+            else{
+                print("Please Select States")
+            }
             
-            
-        self.performSegue(withIdentifier: "rgtvisa", sender: nil)
+        
         }
      
         

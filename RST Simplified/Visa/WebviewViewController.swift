@@ -57,15 +57,15 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
 //         webview.stringByEvaluatingJavaScript(from: "document.getElementById('main').style.display = 'none';")
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var head = document.getElementsByTagName('header')[0];"
-            + "head.parentNode.removeChild(head);" + "console.log('vinay');" + "head.style.margin = 'none';" + "})()")
+            + "head.parentNode.removeChild(head);" + "console.log('vinay');" + "head.style.margin = '0px';" + "})()")
         
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var footer = document.getElementsByTagName('footer')[0];"
-            + "footer.parentNode.removeChild(footer);" + "footer.style.margin = 'none';" + "})()")
+            + "footer.parentNode.removeChild(footer);" + "footer.style.margin = '0px';" + "})()")
         
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var nav = document.getElementsByTagName('nav')[0];"
-            + "nav.parentNode.removeChild(nav);" + "nav.style.margin = 'none';" + "})()")
+            + "nav.parentNode.removeChild(nav);" + "nav.style.margin = '0px';" + "})()")
         
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var set = document.getElementsByClassName('banner');"
