@@ -261,6 +261,30 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
+        if SelectedDestination == "United-States-Of-America" {
+            
+            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://usa-visahub.com/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        if SelectedDestination == "Oman" {
+            
+            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://omanvisas.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+            
+        if SelectedDestination == "Iran" {
+            
+            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://iranvisas.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + "Tourism"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+            
         
         else {
 //            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
