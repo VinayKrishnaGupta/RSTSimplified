@@ -9,7 +9,8 @@
 import UIKit
 import DropDown
 import Alamofire
-import MRProgress
+import SVProgressHUD
+
 
 class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var VisaRequiredForField: UITextField!
@@ -36,9 +37,10 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     var SelectedLivingInCountry = String()
     var SelectedLivinginState = String()
     
-     var overlay = MRProgressOverlayView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         VisaRequiredForField.delegate = self
         CitizenOfField.delegate = self
         LivingInField.delegate = self
@@ -81,11 +83,11 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
 //        
 //        
         
-     overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-        overlay.tintColor = UIColor.lightGray
-        overlay.titleLabel.textColor = UIColor.darkGray
-        overlay.show(true)
-        
+//     overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+//        overlay.tintColor = UIColor.lightGray
+//        overlay.titleLabel.textColor = UIColor.darkGray
+//        overlay.show(true)
+//
         
         
        
@@ -157,7 +159,8 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             [unowned self] (index: Int, item: String) in
             self.VisaRequiredForField.text = "  " + item
            self.SelectedDestination = item.replacingOccurrences(of: " ", with: "-")
-            self.getListofLivingInCountry()
+            self.getListofNationality()
+            
             
         }
         CitizenDropdown.selectionAction = {
@@ -165,7 +168,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             [unowned self] (index: Int, item: String) in
             self.CitizenOfField.text = "  " + item
             self.SelectedCitizenOf = item.replacingOccurrences(of: " ", with: "-")
-            
+            self.getListofLivingInCountry()
             
         }
         LivingInDropdown.selectionAction = {
@@ -173,6 +176,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             [unowned self] (index: Int, item: String) in
             self.LivingInField.text = "  " + item
             self.SelectedLivingInCountry = item.replacingOccurrences(of: " ", with: "-")
+           
             let dict : NSDictionary = self.CountryList[index] as! NSDictionary
             
             if self.SelectedDestination == "United-Arab-Emirates" || self.SelectedDestination == "Singapore" || self.SelectedDestination == "Iran" || self.SelectedDestination == "Oman" || self.SelectedDestination == "United-States-Of-America" {
@@ -181,10 +185,11 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             else {
                 self.SelectedLivingInCountryID = dict.value(forKey: "countryid") as! String
             }
-            
-            self.getListofState()
-            
+             self.getListofState()
         }
+        
+            
+        
         StateDropdown.selectionAction = {
             
             [unowned self] (index: Int, item: String) in
@@ -319,31 +324,108 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             
             .responseJSON { response in
                 debugPrint(response)
-                
-                
-                if let json = response.result.value {
-                    let dict = json as! NSDictionary
+                if let status = response.response?.statusCode {
+                    switch(status){
+                    case 201:
+                        print("example success")
+                    default:
+                        print("error with response status: \(status)")
+                    }
+                }
+                //to get JSON return value
+                if let result = response.result.value {
+                    SVProgressHUD.dismiss()
+                    let dict = result as! NSDictionary
                     self.CountryList = dict.value(forKeyPath: "country") as! [Any]
                     self.CountryNamesList = dict.value(forKeyPath: "country.countryName") as! [String]
                     self.VisaRequiredDropdown.dataSource = self.CountryNamesList
                     self.CitizenDropdown.dataSource = self.CountryNamesList
-                   // self.LivingInDropdown.dataSource = self.CountryNamesList
-                     self.overlay.dismiss(true)
+                    // self.LivingInDropdown.dataSource = self.CountryNamesList
+                   
                     print(dict)
                 }
-                else {
-                    print("Error")
-                }
+                
+        }
+                
+                
+        
+        
                 
         }
        
         
         
         
+    
+    func getListofNationality() {
+        var URLString = String()
+        var parshingtype = String()
+        SVProgressHUD.show()
+        if SelectedDestination == "United-Arab-Emirates" {
+            URLString = "https://uaevisa-online.org/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
+            parshingtype = "country.name"
+        }
+            
+        else if SelectedDestination == "Singapore" {
+            URLString = "http://singaporevisa-online.org/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
+            parshingtype = "country.name"
+        }
+            
+        else if SelectedDestination == "Iran" {
+            URLString = "http://iranvisas.org/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
+            parshingtype = "country.name"
+        }
+            
+        else if SelectedDestination == "Oman" {
+            URLString = "http://omanvisas.org/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
+            parshingtype = "country.name"
+        }
+        else if SelectedDestination == "United-States-Of-America" {
+            URLString = "https://usa-visahub.com/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
+            parshingtype = "country.name"
+        }
+            
+        else {
+            
+            URLString = "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId="
+            parshingtype = "country.countryName"
+        }
+        
+        
+        
+        Alamofire.request( URL(string: URLString)!, method: .get, parameters: nil, headers: nil )
+            
+            
+            .responseJSON { response in
+                debugPrint(response)
+                
+                
+                if let json = response.result.value {
+                    let dict = json as! NSDictionary
+                    self.CountryList = dict.value(forKeyPath: "country") as! [Any]
+                    
+                    
+                    self.CountryNamesList = dict.value(forKeyPath: parshingtype) as! [String]
+                    
+                    
+                    self.CitizenDropdown.dataSource = self.CountryNamesList
+                    SVProgressHUD.dismiss()
+                    print(dict)
+                }
+                else {
+                    print("Error")
+                }
+                
+        
+        
+        
+        
+        
+    }
     }
     
     func getListofLivingInCountry(){
-        
+        SVProgressHUD.show()
        var URLString = String()
         var parshingtype = String()
         
@@ -379,7 +461,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         
         
         
-        Alamofire.request( URL(string: URLString)!, method: .get, parameters: nil, headers: nil )
+        Alamofire.request( URL(string: URLString)!, method: .get, parameters: nil, headers: ["Content-Type":"application/json"])
             
             
             .responseJSON { response in
@@ -395,7 +477,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                     
                    
                     self.LivingInDropdown.dataSource = self.CountryNamesList
-                    self.overlay.dismiss(true)
+                   SVProgressHUD.dismiss()
                     print(dict)
                 }
                 else {
@@ -413,6 +495,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         
         
         if SelectedDestination == "United-States-Of-America" {
+            SVProgressHUD.show()
             StateField.isHidden = false
             let parameter1 = ["LivingInId" : self.SelectedLivingInCountryID]
             
@@ -437,7 +520,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                         self.StateList = dict.value(forKey: "state") as! [Any]
                         self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String]
                         self.StateDropdown.dataSource = self.StateListNames
-                        
+                        SVProgressHUD.dismiss()
                         print(dict)
                     }
                     else {
@@ -454,6 +537,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             
         }
         else {
+            SVProgressHUD.show()
             Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?type=State&countryid=\(SelectedLivingInCountryID)")!, method: .get, parameters: nil, headers: nil )
                 
                 
@@ -466,11 +550,12 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                         self.StateList = dict.value(forKey: "state") as! [Any]
                         self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String]
                         self.StateDropdown.dataSource = self.StateListNames
-                        
+                        SVProgressHUD.dismiss()
                         print(dict)
                     }
                     else {
                         print("Error")
+                        SVProgressHUD.dismiss()
                     }
                     
             }
@@ -502,7 +587,23 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
        else if segue.identifier == "visaWebView" {
             let OtherVisaVC = segue.destination as! Visa1WebViewController
             if SelectedDestination == "United-Arab-Emirates" {
-                OtherVisaVC.URLstring = "https://m.uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                OtherVisaVC.URLstring = "https://uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                
+            }
+           else if SelectedDestination == "Singapore" {
+                OtherVisaVC.URLstring = "https://singaporevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                
+            }
+            else if SelectedDestination == "Iran" {
+                OtherVisaVC.URLstring = "https://iranvisas.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                
+            }
+            else if SelectedDestination == "Oman" {
+                OtherVisaVC.URLstring = "https://omanvisas.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+                
+            }
+            else if SelectedDestination == "United-States-Of-America" {
+                OtherVisaVC.URLstring = "https://usa-visahub.com" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
                 
             }
             
@@ -510,9 +611,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             
         }
         
+}
+
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
     }
-    
-    
     
 
     /*
@@ -524,5 +629,6 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+
 
 }
