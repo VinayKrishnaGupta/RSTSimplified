@@ -256,7 +256,10 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     func SearchButtonMethod() {
         
         if SelectedCitizenOf == "Indonesia" {
-            self.performSegue(withIdentifier: "indonesiaRGT", sender: nil)
+             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://rtgvisas-indonesia.com/Result/indonesia/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
+            self.navigationController?.pushViewController(vc, animated: true)
+            //self.performSegue(withIdentifier: "indonesiaRGT", sender: nil)
         }
         
        else if SelectedDestination == "United-Arab-Emirates" {
@@ -303,7 +306,10 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
 //            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
 //            self.navigationController?.pushViewController(vc, animated: true)
             if SelectedLivinginState != "" {
-                self.performSegue(withIdentifier: "rgtvisa", sender: nil)
+                let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+                vc.URLString = "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedDestination + "/" + SelectedLivinginState
+                self.navigationController?.pushViewController(vc, animated: true)
+               // self.performSegue(withIdentifier: "rgtvisa", sender: nil)
             }
             else{
                 print("Please Select States")
@@ -605,6 +611,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
             else if SelectedDestination == "United-States-Of-America" {
                 OtherVisaVC.URLstring = "https://usa-visahub.com" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
                 
+            }
+            else {
+                 OtherVisaVC.URLstring =  "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedDestination + "/" + SelectedLivinginState
             }
             
             

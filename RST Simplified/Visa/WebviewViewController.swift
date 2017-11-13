@@ -12,11 +12,13 @@ import SVProgressHUD
 class WebviewViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webview: UIWebView!
     public var URLString = String()
+    public var NavigationTitle = String()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webview.delegate = self
+        webview.scrollView.bounces = false
         // Do any additional setup after loading the view.
     }
     
@@ -24,7 +26,8 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
        let url = URL (string: self.URLString)
         let requestObj = URLRequest(url: url!)
         webview.loadRequest(requestObj)
-        
+        self.navigationItem.title = NavigationTitle
+        self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

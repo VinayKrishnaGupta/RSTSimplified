@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */; };
 		2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E281F8B4B590053E642 /* AppDelegate.swift */; };
 		2F091E2E1F8B4B590053E642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E2C1F8B4B590053E642 /* Main.storyboard */; };
 		2F091E301F8B4B590053E642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E2F1F8B4B590053E642 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */; };
 		2FFCBACC1FB1A8D200B28801 /* WebviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCBACA1FB1A8D100B28801 /* WebviewViewController.swift */; };
 		2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFCBACB1FB1A8D100B28801 /* WebviewViewController.xib */; };
+		2FFCBAD01FB97D8B00B28801 /* Immigration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFCBACF1FB97D8B00B28801 /* Immigration.storyboard */; };
 		9D23780BFD9BAF3A4CD6D0BB /* Pods_RST_Simplified.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AACA22F1EB4A3A5C8CCFB53 /* Pods_RST_Simplified.framework */; };
 		B700201787B54A7A961F1AA2 /* Pods_RST_SimplifiedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */; };
 		EDFC383A11BC55AFF6E38E47 /* Pods_RST_SimplifiedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE904AC5F822DDA96FF5E87 /* Pods_RST_SimplifiedTests.framework */; };
@@ -48,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		11CD20CF87586656CD3B1110 /* Pods-RST SimplifiedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImmigrationTypeViewController.swift; sourceTree = "<group>"; };
 		2F091E251F8B4B590053E642 /* RST Simplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RST Simplified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E281F8B4B590053E642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F091E2D1F8B4B590053E642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoesiaVisaRGTViewController.swift; sourceTree = "<group>"; };
 		2FFCBACA1FB1A8D100B28801 /* WebviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewViewController.swift; sourceTree = "<group>"; };
 		2FFCBACB1FB1A8D100B28801 /* WebviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebviewViewController.xib; sourceTree = "<group>"; };
+		2FFCBACF1FB97D8B00B28801 /* Immigration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Immigration.storyboard; sourceTree = "<group>"; };
 		30038440918166AE6BE8EDEF /* Pods-RST SimplifiedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.release.xcconfig"; sourceTree = "<group>"; };
 		307778FDE3AA6E0CF5A0C783 /* Pods_RST_SimplifiedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RST_SimplifiedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FE6853BF0F0ED71FF35616 /* Pods-RST Simplified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST Simplified.release.xcconfig"; path = "Pods/Target Support Files/Pods-RST Simplified/Pods-RST Simplified.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 		2FF074F41FA30289006F88E8 /* Immigration */ = {
 			isa = PBXGroup;
 			children = (
+				2FFCBACF1FB97D8B00B28801 /* Immigration.storyboard */,
+				2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */,
 			);
 			path = Immigration;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */,
+				2FFCBAD01FB97D8B00B28801 /* Immigration.storyboard in Resources */,
 				2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */,
 				2FF074FA1FA30338006F88E8 /* Visa.storyboard in Resources */,
 				2F091E301F8B4B590053E642 /* Assets.xcassets in Resources */,
@@ -556,6 +563,7 @@
 				2FA0AB8D1FA31B3900F9F040 /* CustomSideMenuViewController.swift in Sources */,
 				2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
+				2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */,
 				2FFCBAC11FA8500200B28801 /* Visa1WebViewController.swift in Sources */,
 				2FFCBACC1FB1A8D200B28801 /* WebviewViewController.swift in Sources */,
 				2FF074F81FA30322006F88E8 /* ChooseVisaTypeViewController.swift in Sources */,

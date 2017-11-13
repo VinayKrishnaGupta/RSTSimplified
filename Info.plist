@@ -10,6 +10,13 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>rtgvisas-indonesia.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>iranvisas.org</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

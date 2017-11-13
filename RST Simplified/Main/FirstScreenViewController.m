@@ -7,6 +7,8 @@
 //
 
 #import "FirstScreenViewController.h"
+#import "RST Simplified-Bridging-Header.h"
+#import "RST_Simplified-Swift.h"
 
 @interface FirstScreenViewController () {
     UIImageView *bgImageView;
@@ -55,7 +57,7 @@
     [VisaImageView addGestureRecognizer:VisaTap];
     
     
-    UITapGestureRecognizer *ImmigrationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    UITapGestureRecognizer *ImmigrationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImmigrationButton)];
     ImmigrationTap.numberOfTapsRequired = 1;
     [ImmigrationImageView setUserInteractionEnabled:YES];
     [ImmigrationImageView addGestureRecognizer:ImmigrationTap];
@@ -65,7 +67,7 @@
     [StudentServicesImageView setUserInteractionEnabled:YES];
     [StudentServicesImageView addGestureRecognizer:StudentTap];
     
-    UITapGestureRecognizer *AttestationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    UITapGestureRecognizer *AttestationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AttestationServices)];
     AttestationTap.numberOfTapsRequired = 1;
     [AttestationImageView setUserInteractionEnabled:YES];
     [AttestationImageView addGestureRecognizer:AttestationTap];
@@ -102,6 +104,44 @@
     
     
     [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+-(void)ImmigrationButton {
+    //chooseImmigrationtype
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Immigration" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseImmigrationtype"];
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)AttestationServices {
+   // https://rst-attestation.com/
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
+    
+//    let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+//    vc.URLString = "https://australia-immigrationhub.com/"
+//    vc.NavigationTitle = "Australia Immigration"
+//    self.navigationController?.pushViewController(vc, animated: true)
+    
+    WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
+    vc.URLString = @"https://rst-attestation.com/";
+    vc.NavigationTitle = @"Attestation Services";
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
     
 }
 
