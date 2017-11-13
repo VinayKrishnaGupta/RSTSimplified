@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-X2-tQ7">
-                                        <rect key="frame" x="21" y="410" width="340" height="45"/>
+                                        <rect key="frame" x="0.0" y="421" width="379" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.90522801880000003" green="0.41224205489999999" blue="0.1950619817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Search">
@@ -100,7 +100,7 @@ IAo
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.15059268474578857" green="0.17673349380493164" blue="0.23682078719139099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="dfL-Hv-VG0"/>
                     </view>
                     <connections>

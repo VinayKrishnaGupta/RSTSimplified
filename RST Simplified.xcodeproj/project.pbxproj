@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */; };
+		2F010ABF1FB9B97B008AAC58 /* Student.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F010ABE1FB9B97B008AAC58 /* Student.storyboard */; };
 		2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E281F8B4B590053E642 /* AppDelegate.swift */; };
 		2F091E2E1F8B4B590053E642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E2C1F8B4B590053E642 /* Main.storyboard */; };
 		2F091E301F8B4B590053E642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E2F1F8B4B590053E642 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		11CD20CF87586656CD3B1110 /* Pods-RST SimplifiedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImmigrationTypeViewController.swift; sourceTree = "<group>"; };
+		2F010ABE1FB9B97B008AAC58 /* Student.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Student.storyboard; sourceTree = "<group>"; };
 		2F091E251F8B4B590053E642 /* RST Simplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RST Simplified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E281F8B4B590053E642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F091E2D1F8B4B590053E642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2F010ABD1FB9B948008AAC58 /* Student Services */ = {
+			isa = PBXGroup;
+			children = (
+				2F010ABE1FB9B97B008AAC58 /* Student.storyboard */,
+			);
+			path = "Student Services";
+			sourceTree = "<group>";
+		};
 		2F091E1C1F8B4B590053E642 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 				2FF074F61FA302DC006F88E8 /* Main */,
 				2FF074F51FA302A3006F88E8 /* Common */,
 				2FF074F31FA30281006F88E8 /* Visa */,
+				2F010ABD1FB9B948008AAC58 /* Student Services */,
 				2FF074F41FA30289006F88E8 /* Immigration */,
 			);
 			path = "RST Simplified";
@@ -368,6 +379,7 @@
 			files = (
 				2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */,
 				2FFCBAD01FB97D8B00B28801 /* Immigration.storyboard in Resources */,
+				2F010ABF1FB9B97B008AAC58 /* Student.storyboard in Resources */,
 				2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */,
 				2FF074FA1FA30338006F88E8 /* Visa.storyboard in Resources */,
 				2F091E301F8B4B590053E642 /* Assets.xcassets in Resources */,

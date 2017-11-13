@@ -27,7 +27,8 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         let requestObj = URLRequest(url: url!)
         webview.loadRequest(requestObj)
         self.navigationItem.title = NavigationTitle
-        self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+        //35 42 55
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

@@ -77,7 +77,7 @@
     [AirportServicesImageView setUserInteractionEnabled:YES];
     [AirportServicesImageView addGestureRecognizer:AirportTap];
     
-    UITapGestureRecognizer *PassportTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    UITapGestureRecognizer *PassportTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(PassportServices)];
     PassportTap.numberOfTapsRequired = 1;
     [PassportServicesImageView setUserInteractionEnabled:YES];
     [PassportServicesImageView addGestureRecognizer:PassportTap];
@@ -122,7 +122,7 @@
 }
 
 -(void)AttestationServices {
-   // https://rst-attestation.com/
+   
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
@@ -130,10 +130,6 @@
     self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
     self.navigationController.view.tintColor = [UIColor whiteColor];
     
-//    let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
-//    vc.URLString = "https://australia-immigrationhub.com/"
-//    vc.NavigationTitle = "Australia Immigration"
-//    self.navigationController?.pushViewController(vc, animated: true)
     
     WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
     vc.URLString = @"https://rst-attestation.com/";
@@ -141,8 +137,22 @@
     
     [self.navigationController pushViewController:vc animated:YES];
     
+}
+
+-(void)PassportServices {
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
     
     
+    WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
+    vc.URLString = @"https://uk-passporthub.com";
+    vc.NavigationTitle = @"Passport Services";
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)addAnimatingBackground {

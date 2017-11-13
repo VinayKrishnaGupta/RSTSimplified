@@ -25,7 +25,8 @@ class ChooseImmigrationTypeViewController: UIViewController, UITextFieldDelegate
         ImmigrationTextField.layer.borderWidth = 0.5
         ImmigrationTextField.layer.masksToBounds = true
         
-         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 232/256, green: 105/256, blue: 40/256, alpha: 1)
+         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+       
         
         // Do any additional setup after loading the view.
     }
