@@ -62,7 +62,7 @@
     [ImmigrationImageView setUserInteractionEnabled:YES];
     [ImmigrationImageView addGestureRecognizer:ImmigrationTap];
     
-    UITapGestureRecognizer *StudentTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    UITapGestureRecognizer *StudentTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(StudentServices)];
     StudentTap.numberOfTapsRequired = 1;
     [StudentServicesImageView setUserInteractionEnabled:YES];
     [StudentServicesImageView addGestureRecognizer:StudentTap];
@@ -153,6 +153,20 @@
     vc.NavigationTitle = @"Passport Services";
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)StudentServices {
+    //StudentServiceType
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Student" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"StudentServiceType"];
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 -(void)addAnimatingBackground {

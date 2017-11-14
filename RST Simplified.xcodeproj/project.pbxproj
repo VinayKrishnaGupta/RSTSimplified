@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */; };
 		2F010ABF1FB9B97B008AAC58 /* Student.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F010ABE1FB9B97B008AAC58 /* Student.storyboard */; };
+		2F010AC11FBABA76008AAC58 /* ChooseStudentServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F010AC01FBABA76008AAC58 /* ChooseStudentServiceViewController.swift */; };
+		2F010AC31FBAE41D008AAC58 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F010AC21FBAE41D008AAC58 /* KeyboardLayoutConstraint.swift */; };
 		2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E281F8B4B590053E642 /* AppDelegate.swift */; };
 		2F091E2E1F8B4B590053E642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E2C1F8B4B590053E642 /* Main.storyboard */; };
 		2F091E301F8B4B590053E642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E2F1F8B4B590053E642 /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		11CD20CF87586656CD3B1110 /* Pods-RST SimplifiedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RST SimplifiedUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RST SimplifiedUITests/Pods-RST SimplifiedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImmigrationTypeViewController.swift; sourceTree = "<group>"; };
 		2F010ABE1FB9B97B008AAC58 /* Student.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Student.storyboard; sourceTree = "<group>"; };
+		2F010AC01FBABA76008AAC58 /* ChooseStudentServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStudentServiceViewController.swift; sourceTree = "<group>"; };
+		2F010AC21FBAE41D008AAC58 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		2F091E251F8B4B590053E642 /* RST Simplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RST Simplified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E281F8B4B590053E642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F091E2D1F8B4B590053E642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				2F010ABE1FB9B97B008AAC58 /* Student.storyboard */,
+				2F010AC01FBABA76008AAC58 /* ChooseStudentServiceViewController.swift */,
 			);
 			path = "Student Services";
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				2FF074EF1FA1F886006F88E8 /* RST Simplified-Bridging-Header.h */,
 				2FFCBAC51FA8923D00B28801 /* SharedValues.pch */,
 				2F091E311F8B4B590053E642 /* LaunchScreen.storyboard */,
+				2F010AC21FBAE41D008AAC58 /* KeyboardLayoutConstraint.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -556,6 +563,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,9 +578,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F010AC31FBAE41D008AAC58 /* KeyboardLayoutConstraint.swift in Sources */,
 				2FF074F21FA1F887006F88E8 /* FirstScreenViewController.m in Sources */,
 				2FFCBAC71FAB18C700B28801 /* RTGVisasViewController.swift in Sources */,
 				2FA0AB8D1FA31B3900F9F040 /* CustomSideMenuViewController.swift in Sources */,
+				2F010AC11FBABA76008AAC58 /* ChooseStudentServiceViewController.swift in Sources */,
 				2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
 				2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */,

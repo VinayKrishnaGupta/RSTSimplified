@@ -344,6 +344,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                     let dict = result as! NSDictionary
                     self.CountryList = dict.value(forKeyPath: "country") as! [Any]
                     self.CountryNamesList = dict.value(forKeyPath: "country.countryName") as! [String]
+                    UserDefaults.standard.set(self.CountryNamesList, forKey: "CountryNamesList")
+                    UserDefaults.standard.set(self.CountryList, forKey: "CountryList")
+                    UserDefaults.standard.synchronize()
                     self.VisaRequiredDropdown.dataSource = self.CountryNamesList
                     self.CitizenDropdown.dataSource = self.CountryNamesList
                     // self.LivingInDropdown.dataSource = self.CountryNamesList

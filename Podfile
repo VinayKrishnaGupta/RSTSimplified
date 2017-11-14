@@ -11,6 +11,7 @@ pod 'SideMenuController'
 pod 'Alamofire'
 pod 'MRProgress'
 pod 'SVProgressHUD'
+pod 'SearchTextField'
 use_frameworks!
 
   # Pods for RST Simplified
