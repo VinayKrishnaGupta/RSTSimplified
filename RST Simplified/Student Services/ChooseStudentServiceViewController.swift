@@ -22,6 +22,11 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
     var ServicesList = Array<String>()
     var CountryList = Array<Any>()
     var CountryNamesList = Array<String>()
+    var selectedService = String()
+    var SelectedNationalityName = String()
+    var SelectedNationalityID = String()
+    var SelectedLivingInName = String()
+    var SelectedLivingInID = String()
   
    
     
@@ -114,12 +119,17 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         self.citizentextfield.text = item[itemPosition].title
         self.dismissKeyboard()
         self.citizentextfield.hideResultsList()
+            
+        self.SelectedNationalityName = item[itemPosition].title
+        let dict : NSDictionary = self.CountryList[itemPosition] as! NSDictionary
+        self.SelectedNationalityID = dict.value(forKey: "countryid") as! String
         }
         
         
         
         livingIntextfield.startSuggestingInmediately = true
         livingIntextfield.startVisible = true
+        
         
         livingIntextfield.theme.font = UIFont.systemFont(ofSize: 14)
         livingIntextfield.theme.fontColor = UIColor.darkGray
@@ -133,6 +143,13 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             self.livingIntextfield.keyboardIsShowing = false
             print(item[itemPosition].title)
             print(itemPosition)
+           
+            self.SelectedLivingInName = item[itemPosition].title
+            let dict : NSDictionary = self.CountryList[itemPosition] as! NSDictionary
+            let countryID : String =  dict.value(forKey: "countryid") as! String
+            self.SelectedLivingInID =  countryID + "-" + self.SelectedLivingInName
+            
+            
             self.livingIntextfield.text = item[itemPosition].title
             self.livingIntextfield.hideResultsList()
             self.dismissKeyboard()
@@ -155,7 +172,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         ServicesDropDown.selectionAction = {
             [unowned self] (index: Int, item: String) in
             self.servicerequiretextfield.text = " " + item
-           
+           self.selectedService = item
             
         }
         
@@ -176,10 +193,11 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             return false
         }
         if textField == citizentextfield {
-            
+            citizentextfield.startVisibleWithoutInteraction = true
             return true
         }
         if textField == livingIntextfield {
+            livingIntextfield.startVisibleWithoutInteraction = true
             return true
         }
         else {
@@ -213,9 +231,110 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
     }
     
     func SearchButtonMethod(){
-        let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
-        vc.URLString = "https://uk-immigrationhub.com//leadForm/Tier-4-General-Study-Visa"
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        //"UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Dimploma"
+        
+        if selectedService == "UK | Short Term Study Visa" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://uk-immigrationhub.com//leadForm/Short-Term-Study-Visa"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "30".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "Short Term Study Visa".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "30".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+            vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "UK | Tier 4 General Study Visa" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://uk-immigrationhub.com//leadForm/Tier-4-General-Study-Visa"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "26".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "Tier 4 General Study Visa".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "26".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "UK | IELTS Preparation Course" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://uk-immigrationhub.com//leadForm/IELTS-Preparation-Course"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "37".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "IELTS Preparation Course".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "37".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "UK | Student Consultancy" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://uk-immigrationhub.com//leadForm/Student-Consultancy"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "29".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "Student Consultancy".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "29".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "USA | F1-Student Visa" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://usa-immigrationhub.com//leadForm/F1-Student-Visa"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "29".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "F1-Student Visa".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "29".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "Canada | Student Visa" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://canada-immigrationhub.com//leadForm/Student-Visa"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "32".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "Student Visa".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "32".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "Australia | Student Visa" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://australia-immigrationhub.com/leadForm/Student-Visa"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "27".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "Student Visa".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "27".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if selectedService == "Australia | RPL Dimploma" {
+            let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+            vc.URLString = "https://australia-immigrationhub.com/leadForm/RPL-Diploma"
+            let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let servicetypeEncoded = "&service_type=" + "34".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "RPL Dimploma".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceTypeencoded = "serviceType=" + "34".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
+             vc.requestBody = requestbody
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        
+        
+        
         
     }
     
