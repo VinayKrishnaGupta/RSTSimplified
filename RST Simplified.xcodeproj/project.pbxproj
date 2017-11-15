@@ -17,6 +17,8 @@
 		2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E311F8B4B590053E642 /* LaunchScreen.storyboard */; };
 		2F091E3E1F8B4B590053E642 /* RST_SimplifiedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E3D1F8B4B590053E642 /* RST_SimplifiedTests.swift */; };
 		2F091E491F8B4B590053E642 /* RST_SimplifiedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E481F8B4B590053E642 /* RST_SimplifiedUITests.swift */; };
+		2F1DB5E11FBC1BFC005A7306 /* webViewHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */; };
+		2F1DB5E21FBC1BFC005A7306 /* webViewHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */; };
 		2FA0AB8D1FA31B3900F9F040 /* CustomSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0AB8C1FA31B3900F9F040 /* CustomSideMenuViewController.swift */; };
 		2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0AB8E1FA31D9F00F9F040 /* SideBarViewController.swift */; };
 		2FF074F21FA1F887006F88E8 /* FirstScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF074F11FA1F887006F88E8 /* FirstScreenViewController.m */; };
@@ -69,6 +71,8 @@
 		2F091E441F8B4B590053E642 /* RST SimplifiedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RST SimplifiedUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E481F8B4B590053E642 /* RST_SimplifiedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RST_SimplifiedUITests.swift; sourceTree = "<group>"; };
 		2F091E4A1F8B4B590053E642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewHeaderViewController.swift; sourceTree = "<group>"; };
+		2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = webViewHeaderViewController.xib; sourceTree = "<group>"; };
 		2FA0AB8C1FA31B3900F9F040 /* CustomSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuViewController.swift; sourceTree = "<group>"; };
 		2FA0AB8E1FA31D9F00F9F040 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		2FF074EF1FA1F886006F88E8 /* RST Simplified-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RST Simplified-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				2FFCBAC81FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift */,
 				2FFCBACA1FB1A8D100B28801 /* WebviewViewController.swift */,
 				2FFCBACB1FB1A8D100B28801 /* WebviewViewController.xib */,
+				2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */,
+				2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */,
 			);
 			path = Visa;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */,
+				2F1DB5E21FBC1BFC005A7306 /* webViewHeaderViewController.xib in Resources */,
 				2FFCBAD01FB97D8B00B28801 /* Immigration.storyboard in Resources */,
 				2F010ABF1FB9B97B008AAC58 /* Student.storyboard in Resources */,
 				2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */,
@@ -591,6 +598,7 @@
 				2FF074F81FA30322006F88E8 /* ChooseVisaTypeViewController.swift in Sources */,
 				2FFCBAC41FA88D9300B28801 /* APIHandler.m in Sources */,
 				2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */,
+				2F1DB5E11FBC1BFC005A7306 /* webViewHeaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -323,7 +323,14 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getListofCountries(){
-        
+        if UserDefaults.standard.value(forKeyPath: "CountryList") != nil {
+            self.CountryNamesList = UserDefaults.standard.value(forKey: "CountryNamesList") as! [String]
+            self.CountryList = UserDefaults.standard.value(forKeyPath: "CountryList") as! [Any]
+            self.VisaRequiredDropdown.dataSource = self.CountryNamesList
+            self.CitizenDropdown.dataSource = self.CountryNamesList
+            SVProgressHUD.dismiss()
+        }
+        else {
         
         Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId=")!, method: .get, parameters: nil, headers: nil )
             
@@ -357,7 +364,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         }
                 
                 
-        
+        }
         
                 
         }

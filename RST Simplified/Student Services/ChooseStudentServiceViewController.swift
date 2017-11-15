@@ -9,6 +9,8 @@
 import UIKit
 import DropDown
 import SearchTextField
+import Alamofire
+import SVProgressHUD
 
 class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,44 +22,90 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
     var ServicesList = Array<String>()
     var CountryList = Array<Any>()
     var CountryNamesList = Array<String>()
-    var newView = UIView()
+  
    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         servicerequiretextfield.delegate = self
-        citizentextfield.delegate = self
+//        citizentextfield.delegate = self
+//        livingIntextfield.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
-        self.CountryNamesList = UserDefaults.standard.value(forKey: "CountryNamesList") as! [String]
-        self.CountryList = UserDefaults.standard.value(forKeyPath: "CountryList") as! [Any]
+        
+        if UserDefaults.standard.value(forKeyPath: "CountryList") != nil {
+            self.CountryNamesList = UserDefaults.standard.value(forKey: "CountryNamesList") as! [String]
+            self.CountryList = UserDefaults.standard.value(forKeyPath: "CountryList") as! [Any]
+            citizentextfield.filterStrings(self.CountryNamesList)
+            livingIntextfield.filterStrings(self.CountryNamesList)
+            self.SetupSearchFields()
+            self.setupdropdowns()
+            SVProgressHUD.dismiss()
+        }
+        else {
+            
+            Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId=")!, method: .get, parameters: nil, headers: nil )
+                
+                
+                .responseJSON { response in
+                    debugPrint(response)
+                    if let status = response.response?.statusCode {
+                        switch(status){
+                        case 201:
+                            print("example success")
+                        default:
+                            print("error with response status: \(status)")
+                        }
+                    }
+                    //to get JSON return value
+                    if let result = response.result.value {
+                        SVProgressHUD.dismiss()
+                        let dict = result as! NSDictionary
+                        self.CountryList = dict.value(forKeyPath: "country") as! [Any]
+                        self.CountryNamesList = dict.value(forKeyPath: "country.countryName") as! [String]
+                        UserDefaults.standard.set(self.CountryNamesList, forKey: "CountryNamesList")
+                        UserDefaults.standard.set(self.CountryList, forKey: "CountryList")
+                        UserDefaults.standard.synchronize()
+                        self.citizentextfield.filterStrings(self.CountryNamesList)
+                        self.livingIntextfield.filterStrings(self.CountryNamesList)
+                        self.SetupSearchFields()
+                        self.setupdropdowns()
+                    }
+                    
+            }
+            
+        }
+        
         self.ServicesList = ["UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Dimploma"]
         
-        citizentextfield.filterStrings(self.CountryNamesList)
-        livingIntextfield.filterStrings(self.CountryNamesList)
         
-       self.SetupSearchFields()
-        self.setupdropdowns()
+        
+      
         
         // Do any additional setup after loading the view.
     }
     
     func SetupSearchFields() {
         //citizentextfield.theme = .darkTheme()
+       
+        
+        
         citizentextfield.startSuggestingInmediately = true
         citizentextfield.startVisible = true
         
-        citizentextfield.theme.font = UIFont.systemFont(ofSize: 12)
+        citizentextfield.theme.font = UIFont.systemFont(ofSize: 14)
         citizentextfield.theme.fontColor = UIColor.darkGray
         citizentextfield.theme.bgColor = UIColor.groupTableViewBackground
         citizentextfield.theme.borderColor = UIColor.white
         citizentextfield.theme.separatorColor = UIColor.darkGray
-        citizentextfield.theme.cellHeight = 40
-        self.newView = UIView.init(frame: CGRect.init(x: 10, y: 10, width: self.view.frame.width, height: self.view.frame.height))
-        citizentextfield.willMove(toSuperview: newView)
+        citizentextfield.theme.cellHeight = 50
+        
+//        self.newView = UIView.init(frame: CGRect.init(x: 10, y: 10, width: self.view.frame.width, height: self.view.frame.height))
+//        citizentextfield.willMove(toSuperview: newView)
         
         citizentextfield.itemSelectionHandler = { item, itemPosition in
         self.citizentextfield.keyboardIsShowing = false
@@ -65,7 +113,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         print(itemPosition)
         self.citizentextfield.text = item[itemPosition].title
         self.dismissKeyboard()
-        self.newView.removeFromSuperview()
+        self.citizentextfield.hideResultsList()
         }
         
         
@@ -73,12 +121,12 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         livingIntextfield.startSuggestingInmediately = true
         livingIntextfield.startVisible = true
         
-        livingIntextfield.theme.font = UIFont.systemFont(ofSize: 12)
+        livingIntextfield.theme.font = UIFont.systemFont(ofSize: 14)
         livingIntextfield.theme.fontColor = UIColor.darkGray
         livingIntextfield.theme.bgColor = UIColor.groupTableViewBackground
         livingIntextfield.theme.borderColor = UIColor.white
         livingIntextfield.theme.separatorColor = UIColor.darkGray
-        livingIntextfield.theme.cellHeight = 40
+        livingIntextfield.theme.cellHeight = 50
         
         
         livingIntextfield.itemSelectionHandler = { item, itemPosition in
@@ -86,6 +134,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             print(item[itemPosition].title)
             print(itemPosition)
             self.livingIntextfield.text = item[itemPosition].title
+            self.livingIntextfield.hideResultsList()
             self.dismissKeyboard()
         }
         
@@ -102,6 +151,13 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         ServicesDropDown.anchorView = servicerequiretextfield
         ServicesDropDown.dataSource = ServicesList
         ServicesDropDown.direction = .any
+        
+        ServicesDropDown.selectionAction = {
+            [unowned self] (index: Int, item: String) in
+            self.servicerequiretextfield.text = " " + item
+           
+            
+        }
         
         
     }
@@ -120,8 +176,10 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             return false
         }
         if textField == citizentextfield {
-            self.newView = UIView.init(frame: CGRect.init(x: 10, y: 10, width: self.view.frame.width, height: self.view.frame.height))
-            citizentextfield.willMove(toSuperview: newView)
+            
+            return true
+        }
+        if textField == livingIntextfield {
             return true
         }
         else {
@@ -135,8 +193,12 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         }
         else if textField == citizentextfield {
              citizentextfield.hideResultsList()
+            self.dismissKeyboard()
         }
-        
+        else if textField == livingIntextfield {
+            livingIntextfield.hideResultsList()
+            self.dismissKeyboard()
+        }
         
        
         return false
@@ -145,6 +207,16 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func searchButton(_ sender: UIButton) {
+        self.SearchButtonMethod()
+    }
+    
+    func SearchButtonMethod(){
+        let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
+        vc.URLString = "https://uk-immigrationhub.com//leadForm/Tier-4-General-Study-Visa"
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     
