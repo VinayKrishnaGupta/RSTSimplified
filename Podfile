@@ -12,6 +12,7 @@ pod 'Alamofire'
 pod 'MRProgress'
 pod 'SVProgressHUD'
 pod 'SearchTextField'
+pod 'SwiftyGif'
 use_frameworks!
 
   # Pods for RST Simplified

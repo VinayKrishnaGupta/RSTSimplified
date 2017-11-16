@@ -8,17 +8,32 @@
 
 import UIKit
 import SVProgressHUD
+import SDWebImage
 
 class WebviewViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webview: UIWebView!
     public var URLString = String()
     public var NavigationTitle = String()
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webview.delegate = self
         webview.scrollView.bounces = false
+        
+//        let url = Bundle.main.url(forResource: "coomingsoongif", withExtension: "gif")!
+//        let data = try! Data(contentsOf: url)
+//        webview.load(data, mimeType: "image/gif", textEncodingName: "UTF-8", baseURL: NSURL() as URL)
+        
+//        let imageview1 = UIImageView.init(frame: CGRect.init(x: 100, y: 100, width: 200, height: 200))
+//        let image1 = UIImage.sd_animatedGIFNamed("loadinggif")
+//        imageview1.image = image1
+//        self.view.addSubview(imageview1)
+        // self.imageView2.image = UIImage.sd_animatedGIFNamed("coomingsoongif")
+    //self.gifimageview.image = UIImage.sd_animatedGIFNamed("coomingsoongif")
+       // SVProgressHUD.show(UIImage.init(named: "airport_services"), status: "")
+        
         // Do any additional setup after loading the view.
     }
     
@@ -28,8 +43,21 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         webview.loadRequest(requestObj)
         self.navigationItem.title = NavigationTitle
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+        
+        let rightbarbutton = UIBarButtonItem.init(image: UIImage.init(named: "home"), style: .done, target: self, action: #selector(HomeButton))
+        self.navigationItem.rightBarButtonItem = rightbarbutton
+        
         //35 42 55
     }
+    
+    func HomeButton() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        SVProgressHUD.dismiss()
+    }
+    
     
     func webViewDidStartLoad(_ webView: UIWebView) {
        // let url = URL (string: "https://uk-passporthub.com/")
@@ -52,7 +80,9 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
 //        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
         
         webview.isHidden = true
+        
         SVProgressHUD.show()
+    
         
     }
     
@@ -81,6 +111,7 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         
         webview.isHidden = false
         SVProgressHUD.dismiss()
+       
     }
    
 //    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {

@@ -9,6 +9,7 @@
 #import "FirstScreenViewController.h"
 #import "RST Simplified-Bridging-Header.h"
 #import "RST_Simplified-Swift.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface FirstScreenViewController () {
     UIImageView *bgImageView;
@@ -30,7 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+//    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
+//    [SVProgressHUD show];
     [self SetupTapGuestures];
     // Do any additional setup after loading the view.
 }
@@ -72,7 +74,7 @@
     [AttestationImageView setUserInteractionEnabled:YES];
     [AttestationImageView addGestureRecognizer:AttestationTap];
     
-    UITapGestureRecognizer *AirportTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    UITapGestureRecognizer *AirportTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AirportServices)];
     AirportTap.numberOfTapsRequired = 1;
     [AirportServicesImageView setUserInteractionEnabled:YES];
     [AirportServicesImageView addGestureRecognizer:AirportTap];
@@ -165,6 +167,24 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
     self.navigationController.view.tintColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+-(void)AirportServices {
+    //https://airportservices.ae/
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
+    
+    
+    WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
+    vc.URLString = @"http://airportservices.co";
+    vc.NavigationTitle = @"Airport Services";
+    
     [self.navigationController pushViewController:vc animated:YES];
     
 }

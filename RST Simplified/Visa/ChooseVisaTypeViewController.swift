@@ -309,7 +309,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
 //            self.navigationController?.pushViewController(vc, animated: true)
             if SelectedLivinginState != "" {
                 let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
-                vc.URLString = "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedDestination + "/" + SelectedLivinginState
+                vc.URLString = "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
                 self.navigationController?.pushViewController(vc, animated: true)
                // self.performSegue(withIdentifier: "rgtvisa", sender: nil)
             }
@@ -584,7 +584,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         
         
         
-
+     
         
     }
     
@@ -625,7 +625,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
                 
             }
             else {
-                 OtherVisaVC.URLstring =  "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedDestination + "/" + SelectedLivinginState
+                 OtherVisaVC.URLstring =  "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
             }
             
             

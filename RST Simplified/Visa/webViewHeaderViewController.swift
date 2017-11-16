@@ -63,7 +63,7 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
         //        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
         
         webview.isHidden = true
-        SVProgressHUD.show()
+      //  SVProgressHUD.show()
         
     }
     

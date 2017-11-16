@@ -508,7 +508,7 @@ open class SearchTextField: UITextField {
         guard let frame = self.superview?.convert(self.frame, to: UIApplication.shared.keyWindow) else { return }
         if let keyboardFrame = keyboardFrame {
             var newFrame = frame
-            newFrame.size.height = theme.cellHeight + newFrame.size.height + 50
+            newFrame.size.height = theme.cellHeight + newFrame.size.height 
             
             if keyboardFrame.intersects(newFrame) {
                 direction = .up
