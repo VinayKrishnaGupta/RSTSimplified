@@ -145,6 +145,8 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         CitizenDropdown.anchorView = CitizenOfField
         CitizenDropdown.dataSource = listofsampledata
         CitizenDropdown.direction = .bottom
+    
+        
         
         LivingInDropdown.anchorView = LivingInField
         LivingInDropdown.dataSource = listofsampledata

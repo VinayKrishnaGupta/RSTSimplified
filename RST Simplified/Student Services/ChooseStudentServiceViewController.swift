@@ -35,11 +35,13 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         super.viewDidLoad()
         SVProgressHUD.show()
         servicerequiretextfield.delegate = self
+        self.ServicesList = ["UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Dimploma"]
+        self.setupdropdowns()
 //        citizentextfield.delegate = self
 //        livingIntextfield.delegate = self
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         
-        view.addGestureRecognizer(tap)
+       // view.addGestureRecognizer(tap)
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
         
         if UserDefaults.standard.value(forKeyPath: "CountryList") != nil {
@@ -48,7 +50,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             citizentextfield.filterStrings(self.CountryNamesList)
             livingIntextfield.filterStrings(self.CountryNamesList)
             self.SetupSearchFields()
-            self.setupdropdowns()
+            
             SVProgressHUD.dismiss()
         }
         else {
@@ -78,14 +80,14 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
                         self.citizentextfield.filterStrings(self.CountryNamesList)
                         self.livingIntextfield.filterStrings(self.CountryNamesList)
                         self.SetupSearchFields()
-                        self.setupdropdowns()
+                      
                     }
                     
             }
             
         }
         
-        self.ServicesList = ["UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Dimploma"]
+        
         
         
         
@@ -119,10 +121,18 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         self.citizentextfield.text = item[itemPosition].title
         self.dismissKeyboard()
         self.citizentextfield.hideResultsList()
+            self.SelectedNationalityName = item[itemPosition].title
+            for newtitle in self.CountryList {
+                let dict : Dictionary<String, String> = newtitle as! Dictionary<String, String>
+                if dict["countryName"] == item[itemPosition].title {
+                    self.SelectedNationalityID = dict["countryid"]! + "-" + self.SelectedNationalityName
+                   
+                }
+            }
             
-        self.SelectedNationalityName = item[itemPosition].title
-        let dict : NSDictionary = self.CountryList[itemPosition] as! NSDictionary
-        self.SelectedNationalityID = dict.value(forKey: "countryid") as! String
+        
+//        let dict : NSDictionary = self.CountryList[itemPosition] as! NSDictionary
+//        self.SelectedNationalityID = dict.value(forKey: "countryid") as! String
         }
         
         
@@ -142,12 +152,19 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         livingIntextfield.itemSelectionHandler = { item, itemPosition in
             self.livingIntextfield.keyboardIsShowing = false
             print(item[itemPosition].title)
-            print(itemPosition)
+             self.SelectedLivingInName = item[itemPosition].title
+            for newtitle in self.CountryList {
+                let dict : Dictionary<String, String> = newtitle as! Dictionary<String, String>
+                if dict["countryName"] == item[itemPosition].title {
+                    self.SelectedLivingInID = dict["countryid"]! + "-" + self.SelectedLivingInName
+                 
+                }
+            }
+            
            
-            self.SelectedLivingInName = item[itemPosition].title
-            let dict : NSDictionary = self.CountryList[itemPosition] as! NSDictionary
-            let countryID : String =  dict.value(forKey: "countryid") as! String
-            self.SelectedLivingInID =  countryID + "-" + self.SelectedLivingInName
+//            let dict : NSDictionary = self.CountryList[itemPosition] as! NSDictionary
+//            let countryID : String =  dict.value(forKey: "countryid") as! String
+//            self.SelectedLivingInID =  countryID + "-" + self.SelectedLivingInName
             
             
             self.livingIntextfield.text = item[itemPosition].title
