@@ -73,7 +73,7 @@
 		2F091E4A1F8B4B590053E642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewHeaderViewController.swift; sourceTree = "<group>"; };
 		2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = webViewHeaderViewController.xib; sourceTree = "<group>"; };
-		2F4C91431FBD9ACA008B9FC8 /* loadinggif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loadinggif.gif; sourceTree = "<group>"; };
+		2F4C91431FBD9ACA008B9FC8 /* loadinggif1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loadinggif1.gif; sourceTree = "<group>"; };
 		2FA0AB8C1FA31B3900F9F040 /* CustomSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuViewController.swift; sourceTree = "<group>"; };
 		2FA0AB8E1FA31D9F00F9F040 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		2FD420E81FBDADA6005FEF67 /* coomingsoongif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = coomingsoongif.gif; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				2F091E271F8B4B590053E642 /* RST Simplified */,
 				2F091E341F8B4B590053E642 /* Info.plist */,
 				2FD420E81FBDADA6005FEF67 /* coomingsoongif.gif */,
-				2F4C91431FBD9ACA008B9FC8 /* loadinggif.gif */,
+				2F4C91431FBD9ACA008B9FC8 /* loadinggif1.gif */,
 				2F091E3C1F8B4B590053E642 /* RST SimplifiedTests */,
 				2F091E471F8B4B590053E642 /* RST SimplifiedUITests */,
 				2F091E261F8B4B590053E642 /* Products */,

@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import SDWebImage
+import SwiftyGif
 
 class WebviewViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webview: UIWebView!
@@ -21,6 +22,20 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         webview.delegate = self
         webview.scrollView.bounces = false
+        
+        let gif = UIImage(gifName: "loadinggif1")
+        let gifManager = SwiftyGifManager(memoryLimit:100)
+        
+        let imageview = UIImageView(gifImage: gif, manager: gifManager)
+        imageview.image = UIImage.sd_animatedGIFNamed("loadinggif")
+        imageview.isAnimatingGif()
+        imageview.animationDuration = 5
+        imageview.startAnimating()
+        
+        imageview.backgroundColor = UIColor.lightGray
+        imageview.frame = CGRect(x: 0.0, y: 5.0, width: 300.0, height: 350.0)
+        webview.addSubview(imageview)
+        
         
 //        let url = Bundle.main.url(forResource: "coomingsoongif", withExtension: "gif")!
 //        let data = try! Data(contentsOf: url)

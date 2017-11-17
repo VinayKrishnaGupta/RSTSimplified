@@ -22,6 +22,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var StateField: UITextField!
     let VisaRequiredDropdown = DropDown()
     
+    @IBOutlet weak var stateLabel: UILabel!
     let CitizenDropdown = DropDown()
     let LivingInDropdown = DropDown()
     let StateDropdown = DropDown()
@@ -380,31 +381,42 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         var parshingtype = String()
         SVProgressHUD.show()
         if SelectedDestination == "United-Arab-Emirates" {
+            StateField.isHidden = true
+            stateLabel.isHidden = true
             URLString = "https://uaevisa-online.org/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
             parshingtype = "country.name"
         }
             
         else if SelectedDestination == "Singapore" {
+            StateField.isHidden = true
+            stateLabel.isHidden = true
             URLString = "http://singaporevisa-online.org/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
             parshingtype = "country.name"
         }
             
         else if SelectedDestination == "Iran" {
+            StateField.isHidden = true
+            stateLabel.isHidden = true
             URLString = "http://iranvisas.org/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
             parshingtype = "country.name"
         }
             
         else if SelectedDestination == "Oman" {
+            StateField.isHidden = true
+            stateLabel.isHidden = true
             URLString = "http://omanvisas.org/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
             parshingtype = "country.name"
         }
         else if SelectedDestination == "United-States-Of-America" {
+            StateField.isHidden = false
+            stateLabel.isHidden = false
             URLString = "https://usa-visahub.com/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality"
             parshingtype = "country.name"
         }
             
         else {
-            
+            StateField.isHidden = false
+            stateLabel.isHidden = false
             URLString = "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?Type=COUNTRY&CountryId="
             parshingtype = "country.countryName"
         }
@@ -515,6 +527,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         if SelectedDestination == "United-States-Of-America" {
             SVProgressHUD.show()
             StateField.isHidden = false
+            stateLabel.isHidden = false
             let parameter1 = ["LivingInId" : self.SelectedLivingInCountryID]
             
             let HEADERS: HTTPHeaders = [
@@ -552,10 +565,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         }
        else if SelectedDestination == "United-Arab-Emirates" || SelectedDestination == "Singapore" || SelectedDestination == "Iran" || SelectedDestination == "Oman" {
          StateField.isHidden = true
+        stateLabel.isHidden = true
             
         }
         else {
             SVProgressHUD.show()
+            StateField.isHidden = false
+            stateLabel.isHidden = false
             Alamofire.request( URL(string: "http://api.rtgvisas-uae.com/api/getCountryState/getMaster?type=State&countryid=\(SelectedLivingInCountryID)")!, method: .get, parameters: nil, headers: nil )
                 
                 
