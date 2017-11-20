@@ -122,25 +122,46 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-//        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
-//         webview.stringByEvaluatingJavaScript(from: "document.getElementById('main').style.display = 'none';")
+        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
+         webview.stringByEvaluatingJavaScript(from: "document.getElementById('main').style.display = 'none';")
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var head = document.getElementsByTagName('header')[0];"
             + "head.parentNode.removeChild(head);" + "console.log('vinay');" + "head.style.margin = '0px';" + "})()")
-        
+
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var footer = document.getElementsByTagName('footer')[0];"
             + "footer.parentNode.removeChild(footer);" + "footer.style.margin = '0px';" + "})()")
-        
+
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var nav = document.getElementsByTagName('nav')[0];"
             + "nav.parentNode.removeChild(nav);" + "nav.style.margin = '0px';" + "})()")
-        
+
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var set = document.getElementsByClassName('banner');"
             + "set[0].style.margin = '0px';" +
             "})()")
        
+//        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " + "var header = document.getElementsByTagName('header')[0];" + "header.parentNode.removeChild(header);" + "header.style.margin = '0px';" + "})()")
+//
+//        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " + "var footer = document.getElementsByTagName('footer')[0];"  + "footer.parentNode.removeChild(footer);" + "footer.style.margin = '0px';" + "})()")
+//
+//        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " + "var nav = document.getElementsByTagName('nav')[0];" + "nav.parentNode.removeChild(nav);" + "nav.style.margin = '0px';" + "})()")
+//
+//        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +  "var set = document.getElementsByClassName('banner');" + "set[0].style.margin = '0px';" + "})()")
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         overlay.dismiss(true)
         
