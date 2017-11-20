@@ -8,12 +8,15 @@
 
 import UIKit
 import SVProgressHUD
+import MRProgress
+
 
 class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webview: UIWebView!
     public var URLString = String()
     public var NavigationTitle = String()
     public var requestBody = String()
+    var overlay = MRProgressOverlayView()
     
     
     
@@ -21,7 +24,25 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         webview.delegate = self
         webview.scrollView.bounces = false
-        // Do any additional setup after loading the view.
+        
+        let rightbarbutton = UIBarButtonItem.init(image: UIImage.init(named: "home"), style: .done, target: self, action: #selector(HomeButton))
+        self.navigationItem.rightBarButtonItem = rightbarbutton
+        
+        //  MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        overlay.mode = .indeterminate
+        overlay.backgroundColor = UIColor.groupTableViewBackground
+        overlay.tintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+        overlay.titleLabelText = "Loading"
+        //  overlay.show(true)
+        
+        
+        
+        //35 42 55
+    }
+    
+    func HomeButton() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +84,7 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
         //        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
         
         webview.isHidden = true
+        overlay.show(true)
       //  SVProgressHUD.show()
         
     }
@@ -91,7 +113,8 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
         
         
         webview.isHidden = false
-        SVProgressHUD.dismiss()
+        overlay.dismiss(true)
+       // SVProgressHUD.dismiss()
     }
     
     //    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -121,6 +144,10 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        overlay.dismiss(true)
     }
     
     

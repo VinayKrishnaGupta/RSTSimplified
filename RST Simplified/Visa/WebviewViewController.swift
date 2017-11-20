@@ -9,12 +9,13 @@
 import UIKit
 import SVProgressHUD
 import SDWebImage
-import SwiftyGif
+import MRProgress
 
 class WebviewViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webview: UIWebView!
     public var URLString = String()
     public var NavigationTitle = String()
+    var overlay = MRProgressOverlayView()
     
    
     
@@ -23,19 +24,19 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         webview.delegate = self
         webview.scrollView.bounces = false
         
-        let gif = UIImage(gifName: "loadinggif1")
-        let gifManager = SwiftyGifManager(memoryLimit:100)
-        
-        let imageview = UIImageView(gifImage: gif, manager: gifManager)
-        imageview.image = UIImage.sd_animatedGIFNamed("loadinggif")
-        imageview.isAnimatingGif()
-        imageview.animationDuration = 5
-        imageview.startAnimating()
-        
-        imageview.backgroundColor = UIColor.lightGray
-        imageview.frame = CGRect(x: 0.0, y: 5.0, width: 300.0, height: 350.0)
-        webview.addSubview(imageview)
-        
+//        let gif = UIImage(gifName: "loadinggif1")
+//        let gifManager = SwiftyGifManager(memoryLimit:100)
+//
+//        let imageview = UIImageView(gifImage: gif, manager: gifManager)
+//        imageview.image = UIImage.sd_animatedGIFNamed("loadinggif")
+//        imageview.isAnimatingGif()
+//        imageview.animationDuration = 5
+//        imageview.startAnimating()
+//
+//        imageview.backgroundColor = UIColor.lightGray
+//        imageview.frame = CGRect(x: 0.0, y: 5.0, width: 300.0, height: 350.0)
+//        webview.addSubview(imageview)
+//
         
 //        let url = Bundle.main.url(forResource: "coomingsoongif", withExtension: "gif")!
 //        let data = try! Data(contentsOf: url)
@@ -61,6 +62,16 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         
         let rightbarbutton = UIBarButtonItem.init(image: UIImage.init(named: "home"), style: .done, target: self, action: #selector(HomeButton))
         self.navigationItem.rightBarButtonItem = rightbarbutton
+       
+         //  MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+             overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+               overlay.mode = .indeterminate
+                overlay.backgroundColor = UIColor.groupTableViewBackground
+                overlay.tintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+                overlay.titleLabelText = "Loading"
+              //  overlay.show(true)
+        
+        
         
         //35 42 55
     }
@@ -95,9 +106,18 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
 //        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
         
         webview.isHidden = true
+        overlay.show(true)
         
-        SVProgressHUD.show()
-    
+        
+        
+        
+       // SVProgressHUD.show()
+     //   SVProgressHUD.showProgress(0.5, status: "Loading")
+//        SVProgressHUD.setRingRadius(10)
+//        SVProgressHUD.show(UIImage.sd_animatedGIFNamed("loadinggif1"), status: "Loading")
+
+        
+       
         
     }
     
@@ -122,10 +142,10 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
             "})()")
        
         
-        
+        overlay.dismiss(true)
         
         webview.isHidden = false
-        SVProgressHUD.dismiss()
+        //SVProgressHUD.dismiss()
        
     }
    

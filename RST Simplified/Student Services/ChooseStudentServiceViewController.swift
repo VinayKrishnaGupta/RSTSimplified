@@ -35,7 +35,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         super.viewDidLoad()
         SVProgressHUD.show()
         servicerequiretextfield.delegate = self
-        self.ServicesList = ["UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Dimploma"]
+        self.ServicesList = ["UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Diploma"]
         self.setupdropdowns()
 //        citizentextfield.delegate = self
 //        livingIntextfield.delegate = self
@@ -262,6 +262,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "30".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
             vc.requestBody = requestbody
+            vc.NavigationTitle = "UK | Short Term Study Visa"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if selectedService == "UK | Tier 4 General Study Visa" {
@@ -274,6 +275,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "26".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "UK | Tier 4 General Study Visa"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if selectedService == "UK | IELTS Preparation Course" {
@@ -286,6 +288,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "37".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "UK | IELTS Preparation Course"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if selectedService == "UK | Student Consultancy" {
@@ -298,6 +301,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "29".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "UK | Student Consultancy"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if selectedService == "USA | F1-Student Visa" {
@@ -310,6 +314,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "29".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "USA | F1-Student Visa"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if selectedService == "Canada | Student Visa" {
@@ -322,6 +327,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "32".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "Canada | Student Visa"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if selectedService == "Australia | Student Visa" {
@@ -334,18 +340,20 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
             let serviceTypeencoded = "serviceType=" + "27".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "Australia | Student Visa"
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        else if selectedService == "Australia | RPL Dimploma" {
+        else if selectedService == "Australia | RPL Diploma" {
             let vc = webViewHeaderViewController.init(nibName: "webViewHeaderViewController", bundle: nil)
             vc.URLString = "https://australia-immigrationhub.com/leadForm/RPL-Diploma"
             let NiaEncoded = "&Nia=" + SelectedNationalityID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let LiaEncoded = "&Lia=" + SelectedLivingInID.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let servicetypeEncoded = "&service_type=" + "34".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-            let serviceNameencoded = "&service_name=" + "RPL Dimploma".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let serviceNameencoded = "&service_name=" + "RPL Diploma".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let serviceTypeencoded = "serviceType=" + "34".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             let requestbody : String = serviceTypeencoded + NiaEncoded + LiaEncoded + servicetypeEncoded + serviceNameencoded
              vc.requestBody = requestbody
+            vc.NavigationTitle = "Australia | RPL Diploma"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

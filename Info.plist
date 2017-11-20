@@ -10,6 +10,27 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>usa-immigrationhub.com//leadForm/F1-Student-Visa </key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>canada-immigrationhub.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>australia-immigrationhub.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>rtgvisas-indonesia.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
