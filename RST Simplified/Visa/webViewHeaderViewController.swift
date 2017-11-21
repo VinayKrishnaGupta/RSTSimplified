@@ -93,8 +93,19 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
         //        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
         //         webview.stringByEvaluatingJavaScript(from: "document.getElementById('main').style.display = 'none';")
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
-            "var head = document.getElementsByTagName('header')[0];"
-            + "head.parentNode.removeChild(head);" + "console.log('vinay');" + "head.style.margin = '0px';" + "})()")
+            "var set = document.getElementsByClassName('innerbodypanel');"
+            + "set[0].style.margin.top = '0px';" +
+            "})()")
+        webview.stringByEvaluatingJavaScript(from: "$(document).ready(function() { $('div.innerbodypanel').remove(); })")
+        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
+            "var set = document.getElementsByClassName('headerSection');"
+            + "set[0].style.display = 'none';" +
+            "})()")
+        
+        
+        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
+            "var head = document.getElementsByTagName('header')[0];" + "head"
+            + "head.parentNode.removeChild(head);" + "console.log('vinay');" + "head.style.display = 'none';" + "})()")
         
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
             "var footer = document.getElementsByTagName('footer')[0];"
@@ -108,6 +119,12 @@ class webViewHeaderViewController: UIViewController, UIWebViewDelegate {
             "var set = document.getElementsByClassName('banner');"
             + "set[0].style.margin = '0px';" +
             "})()")
+        
+      
+        
+    
+        
+     //   webview.stringByEvaluatingJavaScript(from: "$(document).ready(function() { $('row bannerpanel').remove(); })")
         
         
         

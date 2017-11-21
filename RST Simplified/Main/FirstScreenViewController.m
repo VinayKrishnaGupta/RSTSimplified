@@ -217,7 +217,7 @@
     // Add UIViewAnimationOptionCurveLinear in options to get constant velocity while moving
     
     
-    [UIView animateWithDuration:8.0f
+    [UIView animateWithDuration:6.0f
                           delay:0.0f
                         options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
                      animations:^{
@@ -226,6 +226,14 @@
                      completion:nil];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated {
+   // [self.view bringSubviewToFront:bgImageView];
+    [self.view willRemoveSubview:bgImageView];
+    
+  
+    
+}
 
 
 /*
