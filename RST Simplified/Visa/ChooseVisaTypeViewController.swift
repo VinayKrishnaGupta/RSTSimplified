@@ -30,9 +30,14 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     let LivingInDropdown = DropDown()
     let StateDropdown = DropDown()
     var CountryList = Array<Any>()
+    var CountryListCitizenOf = Array<Any>()
+    var CountryListLivingIn = Array<Any>()
     var StateList = Array <Any>()
     var StateListNames = Array<String>()
     var CountryNamesList = Array<String>()
+    var CountryNameListCitizenOf = Array<String>()
+    var CountryNameLivingIn = Array<String>()
+    
     var SelectedLivingInCountryID = String()
     var listofsampledata = Array<String>()
     
@@ -146,11 +151,68 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     }
     
     func doneClick() {
+        let indexpath = myUIPicker.selectedRow(inComponent: 0)
+        if indexpath>0 {
+             VisaRequiredForField.text = " " + CountryNamesList[indexpath]
+            self.SelectedDestination = CountryNamesList[indexpath].replacingOccurrences(of: " ", with: "-")
+            self.getListofNationality()
+            
+            
+            if CitizenPicker.selectedRow(inComponent: 0)>0 {
+                let indexpath1 = CitizenPicker.selectedRow(inComponent: 0)
+                CitizenOfField.text = " " + CountryNameListCitizenOf[indexpath1]
+                self.SelectedCitizenOf = CountryNameListCitizenOf[indexpath1].replacingOccurrences(of: " ", with: "-")
+                self.getListofLivingInCountry()
+                
+                let indexpath2 = LivingINPicker.selectedRow(inComponent: 0)
+                if indexpath2>0{
+                    LivingInField.text = CountryNameLivingIn[indexpath2]
+                    
+                    self.SelectedLivingInCountry = CountryNameLivingIn[indexpath2].replacingOccurrences(of: " ", with: "-")
+                    
+                    let dict : NSDictionary = self.CountryListLivingIn[indexpath2] as! NSDictionary
+                    
+                    if self.SelectedDestination == "United-Arab-Emirates" || self.SelectedDestination == "Singapore" || self.SelectedDestination == "Iran" || self.SelectedDestination == "Oman" || self.SelectedDestination == "United-States-Of-America" {
+                        self.SelectedLivingInCountryID = dict.value(forKey: "id") as! String
+                    }
+                    else {
+                        self.SelectedLivingInCountryID = dict.value(forKey: "countryid") as! String
+                    }
+                    self.getListofState()
+                    
+                    let indexpath3 = StatesPicker.selectedRow(inComponent: 0)
+                    if indexpath3>0 {
+                        StateField.text = " " + StateListNames[indexpath3]
+                        self.SelectedLivinginState = StateListNames[indexpath3].replacingOccurrences(of: " ", with: "-")
+                    }
+                }
+                
+                
+            }
+            
+        }
+       
+        
+        
+        
+        
+       
+        
+       
+        
+        
         VisaRequiredForField.resignFirstResponder()
         CitizenOfField.resignFirstResponder()
         LivingInField.resignFirstResponder()
         StateField.resignFirstResponder()
     }
+    
+   
+    
+    
+    
+    
+    
     func cancelClick() {
         VisaRequiredForField.resignFirstResponder()
         CitizenOfField.resignFirstResponder()
@@ -160,21 +222,57 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         
     }
     
-    func doneButtoninPicker(){
-        print("done button pressed")
-    }
+   
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return CountryNamesList[row]
+        if pickerView == myUIPicker {
+            if CountryNamesList.count > 0 {
+                return CountryNamesList[row]
+            }
+            else {
+                return nil
+            }
+           
+        }
+        else if pickerView == CitizenPicker {
+            if CountryNameListCitizenOf.count>0{
+               return CountryNameListCitizenOf[row]
+            }
+            else {
+                return nil
+            }
+           
+        }
+        else if pickerView == LivingINPicker {
+            if CountryNameLivingIn.count>0 {
+               return CountryNameLivingIn[row]
+            }
+            else {
+                return nil
+            }
+           
+        }
+        else if pickerView == StatesPicker {
+            if StateListNames.count>0 {
+              return StateListNames[row]
+            }
+            else {
+                return nil
+            }
+           
+        }
+        else {
+            return nil
+        }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
       
         if pickerView == myUIPicker {
-            VisaRequiredForField.text = " " + CountryNamesList[row]
+           // VisaRequiredForField.text = " " + CountryNamesList[row]
             //  myUIPicker.removeFromSuperview()
         }
         else if pickerView == CitizenPicker {
@@ -288,6 +386,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
           //  self.VisaRequiredForField.text = "  " + item
            self.SelectedDestination = item.replacingOccurrences(of: " ", with: "-")
             self.getListofNationality()
+            
             
             
         }
@@ -568,13 +667,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                 
                 if let json = response.result.value {
                     let dict = json as! NSDictionary
-                    self.CountryList = dict.value(forKeyPath: "country") as! [Any]
+                    self.CountryListCitizenOf = dict.value(forKeyPath: "country") as! [Any]
                     
                     
-                    self.CountryNamesList = dict.value(forKeyPath: parshingtype) as! [String]
+                    self.CountryNameListCitizenOf = dict.value(forKeyPath: parshingtype) as! [String]
                     
-                    
-                    self.CitizenDropdown.dataSource = self.CountryNamesList
+                   
+                    //self.CitizenDropdown.dataSource = self.CountryNamesList
                     SVProgressHUD.dismiss()
                     print(dict)
                 }
@@ -636,13 +735,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                 
                 if let json = response.result.value {
                     let dict = json as! NSDictionary
-                    self.CountryList = dict.value(forKeyPath: "country") as! [Any]
+                    self.CountryListLivingIn = dict.value(forKeyPath: "country") as! [Any]
                    
                     
-                    self.CountryNamesList = dict.value(forKeyPath: parshingtype) as! [String]
+                    self.CountryNameLivingIn = dict.value(forKeyPath: parshingtype) as! [String]
                     
                    
-                    self.LivingInDropdown.dataSource = self.CountryNamesList
+                 //   self.LivingInDropdown.dataSource = self.CountryNamesList
                    SVProgressHUD.dismiss()
                     print(dict)
                 }
@@ -686,7 +785,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                         let dict = json as! NSDictionary
                         self.StateList = dict.value(forKey: "state") as! [Any]
                         self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String]
-                        self.StateDropdown.dataSource = self.StateListNames
+                      //  self.StateDropdown.dataSource = self.StateListNames
                         SVProgressHUD.dismiss()
                         print(dict)
                     }
