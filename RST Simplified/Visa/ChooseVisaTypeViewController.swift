@@ -12,7 +12,9 @@ import Alamofire
 import SVProgressHUD
 
 
-class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
+class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+  
+    
     @IBOutlet weak var VisaRequiredForField: UITextField!
     
     @IBOutlet weak var CitizenOfField: UITextField!
@@ -20,6 +22,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var LivingInField: UITextField!
     
     @IBOutlet weak var StateField: UITextField!
+    
     let VisaRequiredDropdown = DropDown()
     
     @IBOutlet weak var stateLabel: UILabel!
@@ -39,13 +42,21 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     var SelectedLivinginState = String()
     
     
+    //Picker
+    private var myUIPicker: UIPickerView!
+    private var LivingINPicker: UIPickerView!
+    private var CitizenPicker: UIPickerView!
+    private var StatesPicker: UIPickerView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        VisaRequiredForField.delegate = self
-        CitizenOfField.delegate = self
-        LivingInField.delegate = self
-        StateField.delegate = self
+      //  VisaRequiredForField.delegate = self
+//        CitizenOfField.delegate = self
+//        LivingInField.delegate = self
+//        StateField.delegate = self
         VisaRequiredForField.layer.cornerRadius = 10
         VisaRequiredForField.layer.borderColor = UIColor.darkGray.cgColor
         VisaRequiredForField.layer.borderWidth = 0.5
@@ -65,17 +76,131 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         StateField.layer.borderColor = UIColor.darkGray.cgColor
         StateField.layer.borderWidth = 0.5
         StateField.layer.masksToBounds = true
+       
+        //Pickers
+        myUIPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        myUIPicker.dataSource = self
+        myUIPicker.delegate = self
+        self.myUIPicker.backgroundColor = UIColor.groupTableViewBackground
+        VisaRequiredForField.inputView = myUIPicker
+        
+        CitizenPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        CitizenPicker.dataSource = self
+        CitizenPicker.delegate = self
+        CitizenPicker.backgroundColor = UIColor.groupTableViewBackground
+        CitizenOfField.inputView = CitizenPicker
+        
+        LivingINPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        LivingINPicker.dataSource = self
+        LivingINPicker.delegate = self
+        LivingINPicker.backgroundColor = UIColor.groupTableViewBackground
+        LivingInField.inputView = LivingINPicker
+      
+        
+        StatesPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        StatesPicker.dataSource = self
+        StatesPicker.delegate = self
+        StatesPicker.backgroundColor = UIColor.groupTableViewBackground
+        StateField.inputView = StatesPicker
+        StatesPicker.sizeToFit()
+     
+        
+        //PickerToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.init(red: 0.0, green: 122/255, blue: 1, alpha: 1)
+        toolBar.backgroundColor = UIColor.white
+         toolBar.sizeToFit()
+      //  toolBar.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 100)
+       
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ChooseVisaTypeViewController.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ChooseVisaTypeViewController.cancelClick))
+        doneButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+         doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 14)], for: .normal)
+        cancelButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        cancelButton.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 14)], for: .normal)
+        
+        
+        toolBar.setItems([cancelButton,spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
         
         
         
         
-        self.SetupDropDowns()
+       
+        CitizenOfField.inputAccessoryView = toolBar
+        LivingInField.inputAccessoryView = toolBar
+        StateField.inputAccessoryView = toolBar
+        VisaRequiredForField.inputAccessoryView = toolBar
+        
+        
+       // self.SetupDropDowns()
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
       
-        self.setupDownArrowinDropdowns()
+      //  self.setupDownArrowinDropdowns()
 
         // Do any additional setup after loading the view.
     }
+    
+    func doneClick() {
+        VisaRequiredForField.resignFirstResponder()
+        CitizenOfField.resignFirstResponder()
+        LivingInField.resignFirstResponder()
+        StateField.resignFirstResponder()
+    }
+    func cancelClick() {
+        VisaRequiredForField.resignFirstResponder()
+        CitizenOfField.resignFirstResponder()
+        LivingInField.resignFirstResponder()
+        StateField.resignFirstResponder()
+      
+        
+    }
+    
+    func doneButtoninPicker(){
+        print("done button pressed")
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return CountryNamesList[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+      
+        if pickerView == myUIPicker {
+            VisaRequiredForField.text = " " + CountryNamesList[row]
+            //  myUIPicker.removeFromSuperview()
+        }
+        else if pickerView == CitizenPicker {
+            CitizenOfField.text = " " + CountryNamesList[row]
+           // CitizenPicker.removeFromSuperview()
+        }
+        else if pickerView == LivingINPicker {
+            LivingInField.text = " " + CountryNamesList[row]
+          //  LivingINPicker.removeFromSuperview()
+        }
+        else if pickerView == StatesPicker {
+            StateField.text = " " + CountryNamesList[row]
+           // StatesPicker.removeFromSuperview()
+        }
+        
+        
+    }
+
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return CountryNamesList.count
+    }
+    
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         self.getListofCountries()
      //   MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
@@ -95,7 +220,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupDownArrowinDropdowns() {
-        VisaRequiredForField.rightViewMode = .always
+    //    VisaRequiredForField.rightViewMode = .always
         LivingInField.rightViewMode = .always
         CitizenOfField.rightViewMode = .always
         StateField.rightViewMode = .always
@@ -129,7 +254,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         rightView3.addSubview(imageView3)
         
         
-        VisaRequiredForField.rightView = rightView
+     //   VisaRequiredForField.rightView = rightView
         LivingInField.rightView = rightView1
         CitizenOfField.rightView = rightView2
         StateField.rightView = rightView3
@@ -138,9 +263,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     
     
     func SetupDropDowns() {
-        VisaRequiredDropdown.anchorView = VisaRequiredForField
-        VisaRequiredDropdown.dataSource = listofsampledata
-        VisaRequiredDropdown.direction = .bottom
+//        VisaRequiredDropdown.anchorView = VisaRequiredForField
+//        VisaRequiredDropdown.dataSource = listofsampledata
+//        VisaRequiredDropdown.direction = .bottom
        
         
         CitizenDropdown.anchorView = CitizenOfField
@@ -160,7 +285,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
         VisaRequiredDropdown.selectionAction = {
             
             [unowned self] (index: Int, item: String) in
-            self.VisaRequiredForField.text = "  " + item
+          //  self.VisaRequiredForField.text = "  " + item
            self.SelectedDestination = item.replacingOccurrences(of: " ", with: "-")
             self.getListofNationality()
             
@@ -205,29 +330,36 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == VisaRequiredForField {
-            VisaRequiredDropdown.show()
-            return false
-        }
+//        if textField == VisaRequiredForField {
+//
+//            self.view.addSubview(myUIPicker)
+//
+//          //  VisaRequiredDropdown.show()
+//            return false
+//        }
         if textField == LivingInField {
-            LivingInDropdown.show()
-            VisaRequiredDropdown.hide()
-            CitizenDropdown.hide()
-            StateDropdown.hide()
+            self.view.addSubview(LivingINPicker)
+            
+//            LivingInDropdown.show()
+//            VisaRequiredDropdown.hide()
+//            CitizenDropdown.hide()
+//            StateDropdown.hide()
             return false
         }
         if textField == CitizenOfField {
-            LivingInDropdown.hide()
-            VisaRequiredDropdown.hide()
-            CitizenDropdown.show()
-            StateDropdown.hide()
+            self.view.addSubview(CitizenPicker)
+//            LivingInDropdown.hide()
+//            VisaRequiredDropdown.hide()
+//            CitizenDropdown.show()
+//            StateDropdown.hide()
             return false
         }
         if textField == StateField {
-            LivingInDropdown.hide()
-            VisaRequiredDropdown.hide()
-            CitizenDropdown.hide()
-            StateDropdown.show()
+            self.view.addSubview(StatesPicker)
+//            LivingInDropdown.hide()
+//            VisaRequiredDropdown.hide()
+//            CitizenDropdown.hide()
+//            StateDropdown.show()
             return false
         }
         else {
@@ -241,9 +373,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         LivingInDropdown.hide()
-        VisaRequiredDropdown.hide()
+       // VisaRequiredDropdown.hide()
         CitizenDropdown.hide()
         StateDropdown.hide()
+       // myUIPicker.removeFromSuperview()
+        CitizenPicker.removeFromSuperview()
+        LivingINPicker.removeFromSuperview()
+        StatesPicker.removeFromSuperview()
         
         return false
     }
