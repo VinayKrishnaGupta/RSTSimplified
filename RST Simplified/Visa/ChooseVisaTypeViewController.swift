@@ -276,16 +276,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             //  myUIPicker.removeFromSuperview()
         }
         else if pickerView == CitizenPicker {
-            CitizenOfField.text = " " + CountryNamesList[row]
-           // CitizenPicker.removeFromSuperview()
+           
         }
         else if pickerView == LivingINPicker {
-            LivingInField.text = " " + CountryNamesList[row]
-          //  LivingINPicker.removeFromSuperview()
+           
         }
         else if pickerView == StatesPicker {
-            StateField.text = " " + CountryNamesList[row]
-           // StatesPicker.removeFromSuperview()
+           
         }
         
         
@@ -293,7 +290,21 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
 
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CountryNamesList.count
+        if pickerView == myUIPicker {
+           return CountryNamesList.count
+        }
+        else if pickerView == CitizenPicker {
+            return CountryNameListCitizenOf.count
+        }
+        else if pickerView == LivingINPicker {
+            return CountryNameLivingIn.count
+        }
+        else if pickerView == StatesPicker {
+            return StateListNames.count
+        }
+        else {
+            return 0
+        }
     }
     
     
