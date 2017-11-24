@@ -58,6 +58,11 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
+        let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.title = "Visa"
+        
+        
       //  VisaRequiredForField.delegate = self
 //        CitizenOfField.delegate = self
 //        LivingInField.delegate = self
@@ -117,7 +122,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         toolBar.tintColor = UIColor.init(red: 0.0, green: 122/255, blue: 1, alpha: 1)
         toolBar.backgroundColor = UIColor.white
          toolBar.sizeToFit()
-      //  toolBar.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 100)
+      
        
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ChooseVisaTypeViewController.doneClick))
@@ -149,6 +154,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
 
         // Do any additional setup after loading the view.
     }
+    func BackButtonmethod() {
+    self.dismiss(animated: true, completion: nil)
+    self.navigationController?.popToRootViewController(animated: true)
+    
+    }
+    
+    
     
     func doneClick() {
         let indexpath = myUIPicker.selectedRow(inComponent: 0)
@@ -899,7 +911,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        SVProgressHUD.dismiss()
+       
     }
     
 

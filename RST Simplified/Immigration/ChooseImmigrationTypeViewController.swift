@@ -19,6 +19,10 @@ class ChooseImmigrationTypeViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         ImmigrationTextField.delegate = self
         self.ListofServices = ["Australia","Canada","India","United Kingdom", "United States of America"]
+        let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.title = "Immigration Services"
+        
         
         ImmigrationTextField.layer.cornerRadius = 10
         ImmigrationTextField.layer.borderColor = UIColor.darkGray.cgColor
@@ -56,7 +60,11 @@ class ChooseImmigrationTypeViewController: UIViewController, UITextFieldDelegate
         
     }
     
-
+    func BackButtonmethod() {
+        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

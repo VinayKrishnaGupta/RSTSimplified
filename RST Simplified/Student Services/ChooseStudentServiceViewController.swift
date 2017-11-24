@@ -12,10 +12,10 @@ import SearchTextField
 import Alamofire
 import SVProgressHUD
 
-class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate {
+class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var citizentextfield: SearchTextField!
-    @IBOutlet weak var livingIntextfield: SearchTextField!
+    @IBOutlet weak var citizentextfield: UITextField!
+    @IBOutlet weak var livingIntextfield: UITextField!
     @IBOutlet weak var servicerequiretextfield: UITextField!
     
     let ServicesDropDown = DropDown()
@@ -27,16 +27,21 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
     var SelectedNationalityID = String()
     var SelectedLivingInName = String()
     var SelectedLivingInID = String()
-  
-   
     
+    
+    private var CitizenPicker: UIPickerView!
+    private var LivingINPicker: UIPickerView!
+    private var ServicesPicker: UIPickerView! //ServicesPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        servicerequiretextfield.delegate = self
-        self.ServicesList = ["UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Diploma"]
-        self.setupdropdowns()
+        let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.title = "Student Services"
+      //  servicerequiretextfield.delegate = self
+        self.ServicesList = ["Select One","UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Diploma"]
+       // self.setupdropdowns()
 //        citizentextfield.delegate = self
 //        livingIntextfield.delegate = self
         //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -47,10 +52,10 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         if UserDefaults.standard.value(forKeyPath: "CountryList") != nil {
             self.CountryNamesList = UserDefaults.standard.value(forKey: "CountryNamesList") as! [String]
             self.CountryList = UserDefaults.standard.value(forKeyPath: "CountryList") as! [Any]
-            citizentextfield.filterStrings(self.CountryNamesList)
-            livingIntextfield.filterStrings(self.CountryNamesList)
-            self.SetupSearchFields()
-            
+//            citizentextfield.filterStrings(self.CountryNamesList)
+//            livingIntextfield.filterStrings(self.CountryNamesList)
+//            self.SetupSearchFields()
+            self.SetUpPickers()
             SVProgressHUD.dismiss()
         }
         else {
@@ -77,9 +82,10 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
                         UserDefaults.standard.set(self.CountryNamesList, forKey: "CountryNamesList")
                         UserDefaults.standard.set(self.CountryList, forKey: "CountryList")
                         UserDefaults.standard.synchronize()
-                        self.citizentextfield.filterStrings(self.CountryNamesList)
-                        self.livingIntextfield.filterStrings(self.CountryNamesList)
-                        self.SetupSearchFields()
+                         self.SetUpPickers()
+//                        self.citizentextfield.filterStrings(self.CountryNamesList)
+//                        self.livingIntextfield.filterStrings(self.CountryNamesList)
+//                        self.SetupSearchFields()
                       
                     }
                     
@@ -95,7 +101,184 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         
         // Do any additional setup after loading the view.
     }
+    func BackButtonmethod() {
+        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+        
+    }
     
+    func SetUpPickers(){
+        
+        CitizenPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        CitizenPicker.dataSource = self
+        CitizenPicker.delegate = self
+        CitizenPicker.backgroundColor = UIColor.groupTableViewBackground
+        citizentextfield.inputView = CitizenPicker
+        
+        LivingINPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        LivingINPicker.dataSource = self
+        LivingINPicker.delegate = self
+        LivingINPicker.backgroundColor = UIColor.groupTableViewBackground
+        livingIntextfield.inputView = LivingINPicker
+        
+        
+        ServicesPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        ServicesPicker.dataSource = self
+        ServicesPicker.delegate = self
+        ServicesPicker.backgroundColor = UIColor.groupTableViewBackground
+        servicerequiretextfield.inputView = ServicesPicker
+        ServicesPicker.sizeToFit()
+        
+        //PickerToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.init(red: 0.0, green: 122/255, blue: 1, alpha: 1)
+        toolBar.backgroundColor = UIColor.white
+        toolBar.sizeToFit()
+        
+        
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ChooseVisaTypeViewController.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ChooseVisaTypeViewController.cancelClick))
+        doneButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 14)], for: .normal)
+        cancelButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        cancelButton.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 14)], for: .normal)
+        
+        
+        toolBar.setItems([cancelButton,spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        
+        
+        
+        
+        citizentextfield.inputAccessoryView = toolBar
+        livingIntextfield.inputAccessoryView = toolBar
+        servicerequiretextfield.inputAccessoryView = toolBar
+      
+        
+        
+        
+    }
+    
+    func doneClick() {
+        let indexpath = CitizenPicker.selectedRow(inComponent: 0)
+        if indexpath>0 {
+            citizentextfield.text = " " + CountryNamesList[indexpath]
+            self.SelectedNationalityName = CountryNamesList[indexpath].replacingOccurrences(of: " ", with: "-")
+            let dict : Dictionary<String,String> = CountryList[indexpath] as! Dictionary<String, String>
+            self.SelectedNationalityID = dict["countryid"]! + "-" + self.SelectedNationalityName
+           
+            
+            
+            if LivingINPicker.selectedRow(inComponent: 0)>0 {
+                let indexpath1 = LivingINPicker.selectedRow(inComponent: 0)
+                livingIntextfield.text = " " + CountryNamesList[indexpath1]
+                self.SelectedLivingInName = CountryNamesList[indexpath1].replacingOccurrences(of: " ", with: "-")
+                let dict1 : Dictionary<String,String> = CountryList[indexpath] as! Dictionary<String, String>
+                self.SelectedLivingInID = dict1["countryid"]! + "-" + self.SelectedLivingInName
+                
+                
+                let indexpath2 = ServicesPicker.selectedRow(inComponent: 0)
+                if indexpath2>0{
+                    servicerequiretextfield.text = " " + ServicesList[indexpath2]
+                    
+                    self.selectedService = ServicesList[indexpath2]
+                    
+                }
+                
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        citizentextfield.resignFirstResponder()
+        livingIntextfield.resignFirstResponder()
+        servicerequiretextfield.resignFirstResponder()
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    func cancelClick() {
+        citizentextfield.resignFirstResponder()
+        livingIntextfield.resignFirstResponder()
+        servicerequiretextfield.resignFirstResponder()
+        
+        
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == CitizenPicker {
+            if CountryNamesList.count > 0 {
+                return CountryNamesList[row]
+            }
+            else {
+                return nil
+            }
+            
+        }
+        else if pickerView == LivingINPicker {
+            if CountryNamesList.count>0{
+                return CountryNamesList[row]
+            }
+            else {
+                return nil
+            }
+            
+        }
+        else if pickerView == ServicesPicker {
+            if ServicesList.count>0 {
+                return ServicesList[row]
+            }
+            else {
+                return nil
+            }
+            
+        }
+        
+        else {
+            return nil
+        }
+    }
+
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == CitizenPicker {
+            return CountryNamesList.count
+        }
+        else if pickerView == LivingINPicker {
+            return CountryNamesList.count
+        }
+        else if pickerView == ServicesPicker {
+            return ServicesList.count
+        }
+            
+        else {
+            return 0
+        }
+    }
+    
+/*
     func SetupSearchFields() {
         //citizentextfield.theme = .darkTheme()
        
@@ -195,6 +378,8 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         
         
     }
+
+    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -243,6 +428,7 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate 
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  */
     @IBAction func searchButton(_ sender: UIButton) {
         self.SearchButtonMethod()
     }

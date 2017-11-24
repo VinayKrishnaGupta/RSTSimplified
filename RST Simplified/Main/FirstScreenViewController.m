@@ -48,6 +48,9 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
+    if ([self.ButtonNameofHomePage isEqualToString:@"VisaButton"]) {
+        [self VisaButton];
+    }
     
 }
 

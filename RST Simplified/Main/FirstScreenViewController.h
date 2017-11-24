@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FirstScreenViewController : UIViewController
-
+-(void)VisaButton;
+@property(strong,retain) NSString* ButtonNameofHomePage;
 @end

@@ -24,7 +24,9 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         webview.delegate = self
         webview.scrollView.bounces = false
       
-     
+        let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
+        self.navigationItem.leftBarButtonItem = backButton
+       
         
 //        let gif = UIImage(gifName: "loadinggif1")
 //        let gifManager = SwiftyGifManager(memoryLimit:100)
@@ -55,6 +57,12 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    func BackButtonmethod() {
+        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
        let url = URL (string: self.URLString)
         let requestObj = URLRequest(url: url!)
@@ -79,7 +87,9 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     }
     
     func HomeButton() {
+        self.dismiss(animated: true, completion: nil)
         self.navigationController?.popToRootViewController(animated: true)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         
