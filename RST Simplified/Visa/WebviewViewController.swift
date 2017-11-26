@@ -8,7 +8,6 @@
 
 import UIKit
 import SVProgressHUD
-import SDWebImage
 import MRProgress
 
 class WebviewViewController: UIViewController, UIWebViewDelegate {
