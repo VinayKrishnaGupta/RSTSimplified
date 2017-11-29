@@ -179,7 +179,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                 let indexpath2 = LivingINPicker.selectedRow(inComponent: 0)
                 if indexpath2>0{
                     LivingInField.text = " " + CountryNameLivingIn[indexpath2]
-                    
+                    print("Indexpath 2 value is \(CountryNameLivingIn[indexpath2])")
                     self.SelectedLivingInCountry = CountryNameLivingIn[indexpath2].replacingOccurrences(of: " ", with: "-")
                     
                     let dict : NSDictionary = self.CountryListLivingIn[indexpath2] as! NSDictionary
@@ -194,11 +194,11 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                     
                     let indexpath3 = StatesPicker.selectedRow(inComponent: 0)
                     
-                    if indexpath3>=0 {
-                        if StateListNames[0] != "Select One" {
+                    if indexpath3>0 {
+                       
                             StateField.text = " " + StateListNames[indexpath3]
                             self.SelectedLivinginState = StateListNames[indexpath3].replacingOccurrences(of: " ", with: "-")
-                        }
+                      
                         
                     }
                 }
@@ -817,6 +817,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                         let dict = json as! NSDictionary
                         self.StateList = dict.value(forKey: "state") as! [Any]
                         self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String]
+                        
+                      
+                        
                         self.StatesPicker.reloadAllComponents()
                         
                       //  self.StateDropdown.dataSource = self.StateListNames
@@ -853,6 +856,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                         let dict = json as! NSDictionary
                         self.StateList = dict.value(forKey: "state") as! [Any]
                         self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String]
+                        
+                          self.StateListNames.insert("Select One", at: 0)
+                        
                         self.StateDropdown.dataSource = self.StateListNames
                         SVProgressHUD.dismiss()
                         print(dict)
