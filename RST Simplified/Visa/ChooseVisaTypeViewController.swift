@@ -178,7 +178,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                 
                 let indexpath2 = LivingINPicker.selectedRow(inComponent: 0)
                 if indexpath2>0{
-                    LivingInField.text = CountryNameLivingIn[indexpath2]
+                    LivingInField.text = " " + CountryNameLivingIn[indexpath2]
                     
                     self.SelectedLivingInCountry = CountryNameLivingIn[indexpath2].replacingOccurrences(of: " ", with: "-")
                     
@@ -193,9 +193,13 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                     self.getListofState()
                     
                     let indexpath3 = StatesPicker.selectedRow(inComponent: 0)
-                    if indexpath3>0 {
-                        StateField.text = " " + StateListNames[indexpath3]
-                        self.SelectedLivinginState = StateListNames[indexpath3].replacingOccurrences(of: " ", with: "-")
+                    
+                    if indexpath3>=0 {
+                        if StateListNames[0] != "Select One" {
+                            StateField.text = " " + StateListNames[indexpath3]
+                            self.SelectedLivinginState = StateListNames[indexpath3].replacingOccurrences(of: " ", with: "-")
+                        }
+                        
                     }
                 }
                 
@@ -527,6 +531,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
          //   self.performSegue(withIdentifier: "visaWebView", sender: nil)
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://uaevisa-online.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+            vc.ExtraWebscript = true
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -535,6 +540,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             //https://m.singaporevisa-online.org/
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://singaporevisa-online.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+            vc.ExtraWebscript = true
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -542,6 +548,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://usa-visahub.com/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
+            vc.ExtraWebscript = true
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -549,7 +556,9 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://omanvisas.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+            vc.ExtraWebscript = true
             self.navigationController?.pushViewController(vc, animated: true)
+            
             
         }
             
@@ -557,6 +566,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://iranvisas.org/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + "Tourism"
+            vc.ExtraWebscript = true
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -694,7 +704,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                     
                     
                     self.CountryNameListCitizenOf = dict.value(forKeyPath: parshingtype) as! [String]
-                    
+                    self.CitizenPicker.reloadAllComponents()
                    
                     //self.CitizenDropdown.dataSource = self.CountryNamesList
                     SVProgressHUD.dismiss()
@@ -762,7 +772,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                    
                     
                     self.CountryNameLivingIn = dict.value(forKeyPath: parshingtype) as! [String]
-                    
+                    self.LivingINPicker.reloadAllComponents()
                    
                  //   self.LivingInDropdown.dataSource = self.CountryNamesList
                    SVProgressHUD.dismiss()
@@ -780,8 +790,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     
     
     func getListofState(){
-        
-        
+ 
         if SelectedDestination == "United-States-Of-America" {
             SVProgressHUD.show()
             StateField.isHidden = false
@@ -808,11 +817,14 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                         let dict = json as! NSDictionary
                         self.StateList = dict.value(forKey: "state") as! [Any]
                         self.StateListNames = dict.value(forKeyPath: "state.StateName") as! [String]
+                        self.StatesPicker.reloadAllComponents()
+                        
                       //  self.StateDropdown.dataSource = self.StateListNames
                         SVProgressHUD.dismiss()
                         print(dict)
                     }
                     else {
+                         SVProgressHUD.dismiss()
                         print("Error")
                     }
                     
@@ -862,51 +874,51 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "rgtvisa" {
-            let RGTVC = segue.destination as! RTGVisasViewController
-            RGTVC.Citizenof = self.SelectedCitizenOf
-            RGTVC.DestinationCountry = self.SelectedDestination
-            RGTVC.LivingInCountry = self.SelectedLivingInCountry
-            RGTVC.livingInState = self.SelectedLivinginState
-        }
-        
-       else if segue.identifier == "indonesiaRGT" {
-            let IndonesiaVC = segue.destination as! IndoesiaVisaRGTViewController
-            IndonesiaVC.DestinationCountry = self.SelectedDestination
-            IndonesiaVC.StateofIndonesia = self.SelectedLivinginState
-        }
-       else if segue.identifier == "visaWebView" {
-            let OtherVisaVC = segue.destination as! Visa1WebViewController
-            if SelectedDestination == "United-Arab-Emirates" {
-                OtherVisaVC.URLstring = "https://uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
-                
-            }
-           else if SelectedDestination == "Singapore" {
-                OtherVisaVC.URLstring = "https://singaporevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
-                
-            }
-            else if SelectedDestination == "Iran" {
-                OtherVisaVC.URLstring = "https://iranvisas.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
-                
-            }
-            else if SelectedDestination == "Oman" {
-                OtherVisaVC.URLstring = "https://omanvisas.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
-                
-            }
-            else if SelectedDestination == "United-States-Of-America" {
-                OtherVisaVC.URLstring = "https://usa-visahub.com" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
-                
-            }
-            else {
-                 OtherVisaVC.URLstring =  "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
-            }
-            
-            
-            
-        }
-        
-}
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "rgtvisa" {
+//            let RGTVC = segue.destination as! RTGVisasViewController
+//            RGTVC.Citizenof = self.SelectedCitizenOf
+//            RGTVC.DestinationCountry = self.SelectedDestination
+//            RGTVC.LivingInCountry = self.SelectedLivingInCountry
+//            RGTVC.livingInState = self.SelectedLivinginState
+//        }
+//
+//       else if segue.identifier == "indonesiaRGT" {
+//            let IndonesiaVC = segue.destination as! IndoesiaVisaRGTViewController
+//            IndonesiaVC.DestinationCountry = self.SelectedDestination
+//            IndonesiaVC.StateofIndonesia = self.SelectedLivinginState
+//        }
+//       else if segue.identifier == "visaWebView" {
+//            let OtherVisaVC = segue.destination as! Visa1WebViewController
+//            if SelectedDestination == "United-Arab-Emirates" {
+//                OtherVisaVC.URLstring = "https://uaevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+//
+//            }
+//           else if SelectedDestination == "Singapore" {
+//                OtherVisaVC.URLstring = "https://singaporevisa-online.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+//
+//            }
+//            else if SelectedDestination == "Iran" {
+//                OtherVisaVC.URLstring = "https://iranvisas.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+//
+//            }
+//            else if SelectedDestination == "Oman" {
+//                OtherVisaVC.URLstring = "https://omanvisas.org" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf
+//
+//            }
+//            else if SelectedDestination == "United-States-Of-America" {
+//                OtherVisaVC.URLstring = "https://usa-visahub.com" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
+//
+//            }
+//            else {
+//                 OtherVisaVC.URLstring =  "http://rst.rtgvisas.com/Result/" + SelectedCitizenOf + "/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
+//            }
+//
+//
+//
+//        }
+//
+//}
 
     
     

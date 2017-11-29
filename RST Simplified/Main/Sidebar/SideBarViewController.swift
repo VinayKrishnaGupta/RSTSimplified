@@ -12,8 +12,8 @@ import SVProgressHUD
 
 class SideBarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var TableView: UITableView!
-    let MenuItems = ["Home","Visa Services", "Passport Services","Immigration Services","Airport Services","Attestation Services","Student Services","Track Application","Contact Us"]
-    let MenuItemsImageNames = ["home_service_final","visa_services_final","passport_final","immigration_final","airport_services_final","attestations_final","student_services_final","track_application_final","about_us"]
+    let MenuItems = ["Home","Visa Services", "Passport Services","Immigration Services","Airport Services","Attestation Services","Student Services","Contact Us"]
+    let MenuItemsImageNames = ["home_service_final","visa_services_final","passport_final","immigration_final","airport_services_final","attestations_final","student_services_final","about_us"]
     override func viewDidLoad() {
         super.viewDidLoad()
         TableView.dataSource = self

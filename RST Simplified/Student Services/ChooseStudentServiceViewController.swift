@@ -41,12 +41,21 @@ class ChooseStudentServiceViewController: UIViewController, UITextFieldDelegate,
         self.navigationItem.title = "Student Services"
       //  servicerequiretextfield.delegate = self
         self.ServicesList = ["Select One","UK | Short Term Study Visa","UK | Tier 4 General Study Visa", "UK | IELTS Preparation Course","UK | Student Consultancy","USA | F1-Student Visa","Canada | Student Visa","Australia | Student Visa","Australia | RPL Diploma"]
-       // self.setupdropdowns()
-//        citizentextfield.delegate = self
-//        livingIntextfield.delegate = self
-        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+       
+        citizentextfield.layer.cornerRadius = 10
+        citizentextfield.layer.borderColor = UIColor.darkGray.cgColor
+        citizentextfield.layer.borderWidth = 0.5
+        citizentextfield.layer.masksToBounds = true
+        livingIntextfield.layer.cornerRadius = 10
+        livingIntextfield.layer.borderColor = UIColor.darkGray.cgColor
+        livingIntextfield.layer.borderWidth = 0.5
+        livingIntextfield.layer.masksToBounds = true
+        servicerequiretextfield.layer.cornerRadius = 10
+        servicerequiretextfield.layer.borderColor = UIColor.darkGray.cgColor
+        servicerequiretextfield.layer.borderWidth = 0.5
+        servicerequiretextfield.layer.masksToBounds = true
         
-       // view.addGestureRecognizer(tap)
+        
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
         
         if UserDefaults.standard.value(forKeyPath: "CountryList") != nil {

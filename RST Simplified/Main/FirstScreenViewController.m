@@ -42,6 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)viewWillAppear:(BOOL)animated {
+     self.view.userInteractionEnabled = true ;
      [self addAnimatingBackground];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
@@ -96,7 +97,7 @@
 
 
 -(void)VisaButton {
-    
+    self.view.userInteractionEnabled = false ;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Visa" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseVisatype"];
     [self.navigationController.navigationBar setBackgroundImage:nil
@@ -114,7 +115,7 @@
 
 -(void)ImmigrationButton {
     //chooseImmigrationtype
-    
+     self.view.userInteractionEnabled = false ;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Immigration" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseImmigrationtype"];
     [self.navigationController.navigationBar setBackgroundImage:nil
@@ -127,7 +128,7 @@
 }
 
 -(void)AttestationServices {
-   
+    self.view.userInteractionEnabled = false ;
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
@@ -145,6 +146,7 @@
 }
 
 -(void)PassportServices {
+     self.view.userInteractionEnabled = false ;
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
@@ -162,6 +164,7 @@
 
 -(void)StudentServices {
     //StudentServiceType
+     self.view.userInteractionEnabled = false ;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Student" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"StudentServiceType"];
     [self.navigationController.navigationBar setBackgroundImage:nil
@@ -176,6 +179,7 @@
 
 -(void)AirportServices {
     //https://airportservices.ae/
+     self.view.userInteractionEnabled = false ;
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
@@ -185,7 +189,7 @@
     
     
     WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
-    vc.URLString = @"http://airportservices.co";
+    vc.URLString = @"http://airportservices.ae";
     vc.NavigationTitle = @"Airport Services";
     
     [self.navigationController pushViewController:vc animated:YES];
@@ -233,7 +237,7 @@
 -(void)viewWillDisappear:(BOOL)animated {
    // [self.view bringSubviewToFront:bgImageView];
     [self.view willRemoveSubview:bgImageView];
-    
+    self.view.userInteractionEnabled = true;
   
     
 }

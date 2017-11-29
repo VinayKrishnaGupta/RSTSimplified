@@ -15,6 +15,9 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     public var URLString = String()
     public var NavigationTitle = String()
     var overlay = MRProgressOverlayView()
+    public var ExtraWebscript = Bool()
+    var ProgressTimer = Timer()
+    var progressRate = Int()
     
    
     
@@ -25,6 +28,8 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
       
         let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
         self.navigationItem.leftBarButtonItem = backButton
+        ProgressTimer = Timer.init(timeInterval: 1, target: self, selector: #selector(TimerMethod), userInfo: nil, repeats: true)
+        print("Timer Value is %@",ProgressTimer)
        
         
 //        let gif = UIImage(gifName: "loadinggif1")
@@ -58,13 +63,14 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     
     func BackButtonmethod() {
         self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
        let url = URL (string: self.URLString)
-        let requestObj = URLRequest(url: url!)
+        var requestObj = URLRequest(url: url!)
+        requestObj.cachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad
         webview.loadRequest(requestObj)
         self.navigationItem.title = NavigationTitle
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
@@ -73,11 +79,11 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         self.navigationItem.rightBarButtonItem = rightbarbutton
        
          //  MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-             overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-               overlay.mode = .indeterminate
-                overlay.backgroundColor = UIColor.groupTableViewBackground
-                overlay.tintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
-                overlay.titleLabelText = "Loading"
+//             overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+//               overlay.mode = .indeterminate
+//                overlay.backgroundColor = UIColor.groupTableViewBackground
+//                overlay.tintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+//                overlay.titleLabelText = "Loading"
               //  overlay.show(true)
         
         
@@ -93,10 +99,12 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         
         SVProgressHUD.dismiss()
+        overlay.dismiss(true)
     }
     
     
     func webViewDidStartLoad(_ webView: UIWebView) {
+       
        // let url = URL (string: "https://uk-passporthub.com/")
 //        webview.loadHTMLString("javascript:(function() { " +
 //            "var nav = document.getElementsByTagName('wrap')[0];"
@@ -115,9 +123,17 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
 //            + "nav.parentNode.removeChild(nav);" +
 //            "})()")
 //        webview.stringByEvaluatingJavaScript(from: "document.getElementById('wrap').style.display = 'none';")
+        overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        overlay.mode = .indeterminate
+        overlay.backgroundColor = UIColor.groupTableViewBackground
+        overlay.tintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
+        overlay.titleLabelText = "Loading"
         
-        webview.isHidden = true
+        
+        ProgressTimer.fire()
         overlay.show(true)
+        webview.isHidden = true
+       
         
         
         
@@ -132,23 +148,42 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         
     }
     
+    func TimerMethod(){
+        print(ProgressTimer)
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+//        overlay.show(true)
+//        webview.isHidden = true
+        
+        return true
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        SVProgressHUD.dismiss()
+        SVProgressHUD.showError(withStatus: "Error in Fetching data, Please Try Again Later")
+        
+    }
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
         
        
         
       //  webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " + "var head = document.getElementsByTagName('header').remove();" + "var set = document.getElementsByClassName('innerbodypanel');" + "set[0].style.margin = '0px';" + "var set = document.getElementsByClassName('innerbodypanel');" + "set[0].style.margin = '0px';" + "var head = document.getElementsByTagName('header')[0];" + "head.parentNode.removeChild(head);" + "head.style.margin = '0px';" + "var nav = document.getElementsByTagName('nav')[0];" + "nav.parentNode.removeChild(nav);" + "nav.style.margin = '0px';" + "var set = document.getElementsByClassName('banner');" + "set[0].style.margin = '0px';"  + "})()")
         
-       
+        if ExtraWebscript {
+            webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
+                "var head = document.getElementsByTagName('header').remove(); + ()")
+            
+            
+            webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
+                "var set = document.getElementsByClassName('innerbodypanel');"
+                + "set[0].style.margin = '0px';" + "var footer = document.getElementsByTagName('footer')[0];"
+                + "footer.parentNode.removeChild(footer);" + "footer.style.margin = '0px';" +
+                "})()")
+        }
         
-        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
-            "var head = document.getElementsByTagName('header').remove(); + ()")
-
         
-        webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
-            "var set = document.getElementsByClassName('innerbodypanel');"
-            + "set[0].style.margin = '0px';" + "var footer = document.getElementsByTagName('footer')[0];"
-            + "footer.parentNode.removeChild(footer);" + "footer.style.margin = '0px';" +
-            "})()")
 
 
         webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " +
@@ -183,9 +218,10 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         
         
         
-        
+        ProgressTimer.invalidate()
         
         overlay.dismiss(true)
+      
         
         webview.isHidden = false
         //SVProgressHUD.dismiss()
@@ -220,6 +256,8 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
