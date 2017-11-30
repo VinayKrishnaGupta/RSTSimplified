@@ -327,7 +327,10 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     
     
     override func viewWillAppear(_ animated: Bool) {
+        self.ResetAllFields()
         self.getListofCountries()
+        
+        
      //   MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
        
        
@@ -519,7 +522,8 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         self.SearchButtonMethod()
     }
     func SearchButtonMethod() {
-        
+        SVProgressHUD.show()
+        self.view.isUserInteractionEnabled = false
         if SelectedCitizenOf == "Indonesia" {
              let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://rtgvisas-indonesia.com/Result/indonesia/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
@@ -584,6 +588,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             }
             else{
                 print("Please Select States")
+                SVProgressHUD.showError(withStatus: "All Fields are Mandetory")
             }
             
         
@@ -925,11 +930,37 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
 //        }
 //
 //}
-
+    func ResetAllFields(){
+        self.VisaRequiredForField.text = nil
+        self.CitizenOfField.text = nil
+        self.LivingInField.text = nil
+        self.StateField.text = nil
+        self.SelectedCitizenOf.removeAll()
+        self.SelectedDestination.removeAll()
+        self.SelectedLivingInCountry.removeAll()
+        self.SelectedLivinginState.removeAll()
+        self.SelectedLivingInCountryID.removeAll()
+        self.CountryList.removeAll()
+        self.CountryNamesList.removeAll()
+        self.CountryListCitizenOf.removeAll()
+        self.CountryListLivingIn.removeAll()
+        self.CountryNameLivingIn.removeAll()
+        self.CountryNameListCitizenOf.removeAll()
+        self.myUIPicker.reloadAllComponents()
+        self.myUIPicker.selectRow(0, inComponent: 0, animated: false)
+        self.CitizenPicker.reloadAllComponents()
+        self.CitizenPicker.selectRow(0, inComponent: 0, animated: false)
+        self.LivingINPicker.reloadAllComponents()
+        self.LivingINPicker.selectRow(0, inComponent: 0, animated: false)
+        self.StatesPicker.reloadAllComponents()
+        self.StatesPicker.selectRow(0, inComponent: 0, animated: false)
+    }
     
     
     override func viewWillDisappear(_ animated: Bool) {
-       
+        SVProgressHUD.dismiss()
+        self.view.isUserInteractionEnabled = true
+        
     }
     
 
