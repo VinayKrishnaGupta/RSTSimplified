@@ -109,13 +109,15 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         
         SVProgressHUD.dismiss()
         SVProgressHUD.setRingNoTextRadius(24)
+        self.webview.stopLoading()
         
         
     }
     
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-        
+        theBool = false
+        progressRate = 0
         ProgressTimer.fire()
         
        // let url = URL (string: "https://uk-passporthub.com/")
@@ -147,14 +149,6 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         SVProgressHUD.showProgress(Float(progressRate))
         SVProgressHUD.setRingNoTextRadius(40)
         SVProgressHUD.setForegroundColor(UIColor.blue)
-       
-        
-        
-       
-        
-        
-        
-//        overlay.show(true)
         webview.isHidden = true
        
         
@@ -180,7 +174,8 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-    progressRate = 1
+        theBool = true
+        progressRate = 1
     
         
       //  webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " + "var head = document.getElementsByTagName('header').remove();" + "var set = document.getElementsByClassName('innerbodypanel');" + "set[0].style.margin = '0px';" + "var set = document.getElementsByClassName('innerbodypanel');" + "set[0].style.margin = '0px';" + "var head = document.getElementsByTagName('header')[0];" + "head.parentNode.removeChild(head);" + "head.style.margin = '0px';" + "var nav = document.getElementsByTagName('nav')[0];" + "nav.parentNode.removeChild(nav);" + "nav.style.margin = '0px';" + "var set = document.getElementsByClassName('banner');" + "set[0].style.margin = '0px';"  + "})()")
@@ -234,10 +229,10 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
      //   ProgressTimer.invalidate()
         
       //  overlay.dismiss(true)
-         theBool = true
+       
         
         webview.isHidden = false
-       // SVProgressHUD.dismiss()
+        SVProgressHUD.dismiss()
        
     }
     func handleProgress () {
