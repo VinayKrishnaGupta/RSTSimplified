@@ -58,6 +58,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
+        
         let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.title = "Visa"
@@ -519,15 +520,35 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         // Dispose of any resources that can be recreated.
     }
     @IBAction func ProceedButton(_ sender: UIButton) {
-        self.SearchButtonMethod()
+        if SelectedCitizenOf.isEmpty || SelectedLivingInCountry.isEmpty || SelectedDestination.isEmpty {
+            SVProgressHUD.showError(withStatus: "All Fields are Mandetory..")
+            SVProgressHUD.dismiss(withDelay: 2)
+        }
+        else {
+             self.SearchButtonMethod()
+        }
+        
+        
+       
     }
     func SearchButtonMethod() {
+        
         SVProgressHUD.show()
         self.view.isUserInteractionEnabled = false
+        
+        
         if SelectedCitizenOf == "Indonesia" {
              let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
-            vc.URLString = "https://rtgvisas-indonesia.com/Result/indonesia/" + SelectedDestination + "/" + SelectedLivingInCountry + "/" + SelectedLivinginState
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc.URLString = "http://rst.rtgvisas-indonesia.com/Result/indonesia/" + SelectedDestination.lowercased() + "/" + SelectedLivingInCountry.lowercased() + "/" + SelectedLivinginState.lowercased()
+            if SelectedLivinginState.isEmpty {
+                 SVProgressHUD.showError(withStatus: "Please Select State..")
+                 SVProgressHUD.dismiss(withDelay: 2)
+               
+            }
+            else {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
             //self.performSegue(withIdentifier: "indonesiaRGT", sender: nil)
         }
         
@@ -553,7 +574,14 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://usa-visahub.com/" + "/" + self.SelectedLivingInCountry + "/" + self.SelectedCitizenOf + "/" + self.SelectedLivinginState
             vc.ExtraWebscript = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            if SelectedLivinginState.isEmpty {
+                SVProgressHUD.showError(withStatus: "Please Select State..")
+                SVProgressHUD.dismiss(withDelay: 2)
+            }
+            else {
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
             
         }
        else if SelectedDestination == "Oman" {
@@ -587,8 +615,8 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                // self.performSegue(withIdentifier: "rgtvisa", sender: nil)
             }
             else{
-                print("Please Select States")
-                SVProgressHUD.showError(withStatus: "All Fields are Mandetory")
+                SVProgressHUD.showError(withStatus: "Please Select State..")
+                SVProgressHUD.dismiss(withDelay: 2)
             }
             
         
@@ -946,14 +974,17 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         self.CountryListLivingIn.removeAll()
         self.CountryNameLivingIn.removeAll()
         self.CountryNameListCitizenOf.removeAll()
+       
+        self.myUIPicker.selectRow(0, inComponent: 0, animated: true)
+        self.CitizenPicker.selectRow(0, inComponent: 0, animated: true)
+        
+        self.LivingINPicker.selectRow(0, inComponent: 0, animated: true)
+        
+        self.StatesPicker.selectRow(0, inComponent: 0, animated: true)
         self.myUIPicker.reloadAllComponents()
-        self.myUIPicker.selectRow(0, inComponent: 0, animated: false)
         self.CitizenPicker.reloadAllComponents()
-        self.CitizenPicker.selectRow(0, inComponent: 0, animated: false)
         self.LivingINPicker.reloadAllComponents()
-        self.LivingINPicker.selectRow(0, inComponent: 0, animated: false)
         self.StatesPicker.reloadAllComponents()
-        self.StatesPicker.selectRow(0, inComponent: 0, animated: false)
     }
     
     

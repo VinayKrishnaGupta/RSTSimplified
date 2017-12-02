@@ -83,7 +83,7 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         else if indexPath.section == 4 {
             
-            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            let vc = AirportWebViewController.init(nibName: "AirportWebViewController", bundle: nil)
             vc.URLString = "http://airportservices.co"
             vc.NavigationTitle = "Airport Services"
             let aObjNavi = UINavigationController(rootViewController: vc)

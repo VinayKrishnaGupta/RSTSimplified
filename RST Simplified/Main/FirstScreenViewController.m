@@ -31,9 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [SVProgressHUD setErrorImage:[UIImage imageNamed:@"warning"]];
+    [SVProgressHUD setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
 //    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
 //    [SVProgressHUD show];
-    [self SetupTapGuestures];
+   
     // Do any additional setup after loading the view.
 }
 
@@ -42,6 +45,10 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)viewWillAppear:(BOOL)animated {
+    [SVProgressHUD setRingNoTextRadius:24];
+    [SVProgressHUD setRingThickness:2];
+    
+     [self SetupTapGuestures];
      self.view.userInteractionEnabled = true ;
      [self addAnimatingBackground];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -49,9 +56,7 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];////UIImageNamed:@"transparent.png"
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
-    if ([self.ButtonNameofHomePage isEqualToString:@"VisaButton"]) {
-        [self VisaButton];
-    }
+    
     
 }
 
@@ -97,6 +102,7 @@
 
 
 -(void)VisaButton {
+    [SVProgressHUD show];
     self.view.userInteractionEnabled = false ;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Visa" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseVisatype"];
@@ -115,6 +121,7 @@
 
 -(void)ImmigrationButton {
     //chooseImmigrationtype
+    [SVProgressHUD show];
      self.view.userInteractionEnabled = false ;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Immigration" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"chooseImmigrationtype"];
@@ -128,6 +135,7 @@
 }
 
 -(void)AttestationServices {
+    [SVProgressHUD show];
     self.view.userInteractionEnabled = false ;
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
@@ -146,6 +154,7 @@
 }
 
 -(void)PassportServices {
+  //  [SVProgressHUD show];
      self.view.userInteractionEnabled = false ;
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
@@ -164,6 +173,7 @@
 
 -(void)StudentServices {
     //StudentServiceType
+    [SVProgressHUD show];
      self.view.userInteractionEnabled = false ;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Student" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"StudentServiceType"];
@@ -179,6 +189,7 @@
 
 -(void)AirportServices {
     //https://airportservices.ae/
+    [SVProgressHUD show];
      self.view.userInteractionEnabled = false ;
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
@@ -188,7 +199,7 @@
     self.navigationController.view.tintColor = [UIColor whiteColor];
     
     
-    WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
+    AirportWebViewController *vc = [[AirportWebViewController alloc] initWithNibName:@"AirportWebViewController" bundle:nil];
     vc.URLString = @"http://airportservices.ae";
     vc.NavigationTitle = @"Airport Services";
     
@@ -236,8 +247,9 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
    // [self.view bringSubviewToFront:bgImageView];
-    [self.view willRemoveSubview:bgImageView];
+ //   [self.view willRemoveSubview:bgImageView];
     self.view.userInteractionEnabled = true;
+    [SVProgressHUD dismiss];
   
     
 }
