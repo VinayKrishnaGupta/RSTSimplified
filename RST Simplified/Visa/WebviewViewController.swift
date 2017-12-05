@@ -125,7 +125,7 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         self.theBool = false
         SVProgressHUD.setRingNoTextRadius(24)
         SVProgressHUD.setRingThickness(2)
-        
+        progressRate = 0
         self.webview.stopLoading()
         
         
@@ -134,7 +134,7 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         
-        progressRate = 0
+      //  progressRate = 0
         webview.isHidden = true
        
         ProgressTimer.invalidate()
@@ -170,13 +170,14 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         SVProgressHUD.dismiss()
-        SVProgressHUD.showError(withStatus: "Error in Fetching data, Please Try Again Later")
+        SVProgressHUD.showError(withStatus: "Error in Fetching data, Please Try again")
         ProgressTimer.invalidate()
+        progressRate = 0
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         theBool = true
-        progressRate = 1
+        progressRate = 0
     
         
       //  webview.stringByEvaluatingJavaScript(from: "javascript:(function() { " + "var head = document.getElementsByTagName('header').remove();" + "var set = document.getElementsByClassName('innerbodypanel');" + "set[0].style.margin = '0px';" + "var set = document.getElementsByClassName('innerbodypanel');" + "set[0].style.margin = '0px';" + "var head = document.getElementsByTagName('header')[0];" + "head.parentNode.removeChild(head);" + "head.style.margin = '0px';" + "var nav = document.getElementsByTagName('nav')[0];" + "nav.parentNode.removeChild(nav);" + "nav.style.margin = '0px';" + "var set = document.getElementsByClassName('banner');" + "set[0].style.margin = '0px';"  + "})()")
@@ -227,13 +228,14 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         
        
         
-     //   ProgressTimer.invalidate()
+       ProgressTimer.invalidate()
         
       //  overlay.dismiss(true)
        
         
         webview.isHidden = false
         SVProgressHUD.dismiss()
+   
        
     }
     func handleProgress () {
@@ -243,6 +245,7 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
                 SVProgressHUD.showProgress(Float(progressRate))
                 SVProgressHUD.dismiss(withDelay: 0.2)
                 ProgressTimer.invalidate()
+                
             } else {
                 progressRate += 0.1
                  SVProgressHUD.showProgress(Float(progressRate))

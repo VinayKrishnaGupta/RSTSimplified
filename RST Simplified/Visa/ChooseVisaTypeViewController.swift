@@ -332,18 +332,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         self.getListofCountries()
         
         
-     //   MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-       
-       
-//        
-//        
-        
-//     overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-//        overlay.tintColor = UIColor.lightGray
-//        overlay.titleLabel.textColor = UIColor.darkGray
-//        overlay.show(true)
-//
-        
+   
         
        
     }
@@ -630,8 +619,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
         if UserDefaults.standard.value(forKeyPath: "CountryList") != nil {
             self.CountryNamesList = UserDefaults.standard.value(forKey: "CountryNamesList") as! [String]
             self.CountryList = UserDefaults.standard.value(forKeyPath: "CountryList") as! [Any]
-            self.VisaRequiredDropdown.dataSource = self.CountryNamesList
-            self.CitizenDropdown.dataSource = self.CountryNamesList
+            myUIPicker.reloadAllComponents()
             SVProgressHUD.dismiss()
         }
         else {
@@ -658,8 +646,7 @@ class ChooseVisaTypeViewController: UIViewController, UITextFieldDelegate, UIPic
                     UserDefaults.standard.set(self.CountryNamesList, forKey: "CountryNamesList")
                     UserDefaults.standard.set(self.CountryList, forKey: "CountryList")
                     UserDefaults.standard.synchronize()
-                    self.VisaRequiredDropdown.dataSource = self.CountryNamesList
-                    self.CitizenDropdown.dataSource = self.CountryNamesList
+                    self.myUIPicker.reloadAllComponents()
                     // self.LivingInDropdown.dataSource = self.CountryNamesList
                    
                     print(dict)

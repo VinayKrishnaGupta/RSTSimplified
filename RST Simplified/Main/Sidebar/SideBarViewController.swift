@@ -118,6 +118,10 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             
             
         }
+        else if indexPath.section == 7 {
+            SVProgressHUD.showInfo(withStatus: "Email us at: admin@rstintl.com")
+            SVProgressHUD.dismiss(withDelay: 3)
+        }
         
             
         else {
