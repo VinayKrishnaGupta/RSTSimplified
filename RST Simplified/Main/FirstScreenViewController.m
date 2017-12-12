@@ -33,6 +33,9 @@
     [super viewDidLoad];
     [SVProgressHUD setErrorImage:[UIImage imageNamed:@"warning"]];
     [SVProgressHUD setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    UIBarButtonItem *contactusButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"contactushome"] style:UIBarButtonItemStyleDone target:self action:@selector(ContactUsMethod)];
+    self.navigationItem.rightBarButtonItem = contactusButton;
+    
     
 //    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
 //    [SVProgressHUD show];
@@ -96,8 +99,23 @@
     
 }
 
--(void)tapDetected{
-    NSLog(@"single Tap on imageview");
+-(void)ContactUsMethod{
+    //Contact US Method
+    
+    self.view.userInteractionEnabled = false ;
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault]; //UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.shadowImage = nil;////UIImageNamed:@"transparent.png"
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.view.backgroundColor = [UIColor colorWithRed:232/256 green:105/256 blue:40/256 alpha:1];
+    self.navigationController.view.tintColor = [UIColor whiteColor];
+    
+    
+    WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
+   vc.URLString = @"https://www.rtgvisas.com/contact.aspx";
+    vc.NavigationTitle = @"Contact Us";
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -166,6 +184,7 @@
     
     WebviewViewController *vc = [[WebviewViewController alloc] initWithNibName:@"WebviewViewController" bundle:nil];
     vc.URLString = @"https://uk-passporthub.com";
+   // vc.URLString = @"https://www.rtgvisas.com/contact.aspx";
     vc.NavigationTitle = @"Passport Services";
     
     [self.navigationController pushViewController:vc animated:YES];

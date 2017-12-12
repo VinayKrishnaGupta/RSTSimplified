@@ -65,7 +65,9 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             vc.NavigationTitle = "Passport Services"
             let aObjNavi = UINavigationController(rootViewController: vc)
             aObjNavi.navigationBar.isTranslucent = false
+            aObjNavi.navigationItem.title = "Passport Services"
             aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             self.present(aObjNavi, animated: true, completion: nil)
             
             
@@ -77,6 +79,8 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             let aObjNavi = UINavigationController(rootViewController: vc)
             aObjNavi.navigationBar.isTranslucent = false
             aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationItem.title = "Immigration Services"
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             self.present(aObjNavi, animated: true, completion: nil)
             
             
@@ -89,6 +93,7 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             let aObjNavi = UINavigationController(rootViewController: vc)
             aObjNavi.navigationBar.isTranslucent = false
             aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             self.present(aObjNavi, animated: true, completion: nil)
             
             
@@ -102,6 +107,7 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             let aObjNavi = UINavigationController(rootViewController: vc)
             aObjNavi.navigationBar.isTranslucent = false
             aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             self.present(aObjNavi, animated: true, completion: nil)
             
             
@@ -112,15 +118,24 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             let storyboard1 = UIStoryboard(name: "Student", bundle: nil)
             let vc = storyboard1.instantiateViewController(withIdentifier: "StudentServiceType")
             let aObjNavi = UINavigationController(rootViewController: vc)
+            
             aObjNavi.navigationBar.isTranslucent = false
             aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            aObjNavi.navigationItem.title = "Student Services"
             self.present(aObjNavi, animated: true, completion: nil)
             
             
         }
         else if indexPath.section == 7 {
-            SVProgressHUD.showInfo(withStatus: "Email us at: admin@rstintl.com")
-            SVProgressHUD.dismiss(withDelay: 3)
+            let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
+            vc.URLString = "https://www.rtgvisas.com/contact.aspx"
+            vc.NavigationTitle = "Contact Us"
+            let aObjNavi = UINavigationController(rootViewController: vc)
+            aObjNavi.navigationBar.isTranslucent = false
+            aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            self.present(aObjNavi, animated: true, completion: nil)
         }
         
             
