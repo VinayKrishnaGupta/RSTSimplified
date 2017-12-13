@@ -99,18 +99,6 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
         self.navigationItem.rightBarButtonItem = rightbarbutton
        
         
-         //  MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-//             overlay = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-//               overlay.mode = .indeterminate
-//                overlay.backgroundColor = UIColor.groupTableViewBackground
-//                overlay.tintColor = UIColor.init(red: 35.0/255.0, green: 42.0/255.0, blue: 55.0/255.0, alpha: 1)
-//                overlay.titleLabelText = "Loading"
-              //  overlay.show(true)
-      //  ProgressTimer.invalidate()
-       
-       
-        
-        //35 42 55
     }
     
     func HomeButton() {

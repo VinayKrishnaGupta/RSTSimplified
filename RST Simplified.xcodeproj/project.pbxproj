@@ -17,6 +17,8 @@
 		2F091E331F8B4B590053E642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F091E311F8B4B590053E642 /* LaunchScreen.storyboard */; };
 		2F091E3E1F8B4B590053E642 /* RST_SimplifiedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E3D1F8B4B590053E642 /* RST_SimplifiedTests.swift */; };
 		2F091E491F8B4B590053E642 /* RST_SimplifiedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091E481F8B4B590053E642 /* RST_SimplifiedUITests.swift */; };
+		2F1815711FDFE28C00EDD682 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F18156F1FDFE28C00EDD682 /* AboutUsViewController.swift */; };
+		2F1815721FDFE28C00EDD682 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1815701FDFE28C00EDD682 /* AboutUsViewController.xib */; };
 		2F1DB5E11FBC1BFC005A7306 /* webViewHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */; };
 		2F1DB5E21FBC1BFC005A7306 /* webViewHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */; };
 		2F939B321FD18171005627CF /* AirportWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F939B301FD18170005627CF /* AirportWebViewController.swift */; };
@@ -73,6 +75,8 @@
 		2F091E441F8B4B590053E642 /* RST SimplifiedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RST SimplifiedUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F091E481F8B4B590053E642 /* RST_SimplifiedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RST_SimplifiedUITests.swift; sourceTree = "<group>"; };
 		2F091E4A1F8B4B590053E642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F18156F1FDFE28C00EDD682 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		2F1815701FDFE28C00EDD682 /* AboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewHeaderViewController.swift; sourceTree = "<group>"; };
 		2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = webViewHeaderViewController.xib; sourceTree = "<group>"; };
 		2F4C91431FBD9ACA008B9FC8 /* loadinggif1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loadinggif1.gif; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 			children = (
 				2FA0AB8C1FA31B3900F9F040 /* CustomSideMenuViewController.swift */,
 				2FA0AB8E1FA31D9F00F9F040 /* SideBarViewController.swift */,
+				2F18156F1FDFE28C00EDD682 /* AboutUsViewController.swift */,
+				2F1815701FDFE28C00EDD682 /* AboutUsViewController.xib */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F1815721FDFE28C00EDD682 /* AboutUsViewController.xib in Resources */,
 				2FFCBACD1FB1A8D200B28801 /* WebviewViewController.xib in Resources */,
 				2F1DB5E21FBC1BFC005A7306 /* webViewHeaderViewController.xib in Resources */,
 				2F939B331FD18171005627CF /* AirportWebViewController.xib in Resources */,
@@ -604,6 +611,7 @@
 				2F010AC11FBABA76008AAC58 /* ChooseStudentServiceViewController.swift in Sources */,
 				2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
+				2F1815711FDFE28C00EDD682 /* AboutUsViewController.swift in Sources */,
 				2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */,
 				2FFCBAC11FA8500200B28801 /* Visa1WebViewController.swift in Sources */,
 				2FFCBACC1FB1A8D200B28801 /* WebviewViewController.swift in Sources */,

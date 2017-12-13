@@ -12,8 +12,8 @@ import SVProgressHUD
 
 class SideBarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var TableView: UITableView!
-    let MenuItems = ["Home","Visa Services", "Passport Services","Immigration Services","Airport Services","Attestation Services","Student Services","Contact Us"]
-    let MenuItemsImageNames = ["home_service_final","visa_services_final","passport_final","immigration_final","airport_services_final","attestations_final","student_services_final","about_us"]
+    let MenuItems = ["Home","Visa Services", "Passport Services","Immigration Services","Airport Services","Attestation Services","Student Services","Contact Us", "About Us"]
+    let MenuItemsImageNames = ["home_service_final","visa_services_final","passport_final","immigration_final","airport_services_final","attestations_final","student_services_final","about_us", "track_application_final"]
     override func viewDidLoad() {
         super.viewDidLoad()
         TableView.dataSource = self
@@ -131,6 +131,15 @@ class SideBarViewController: UIViewController, UITableViewDataSource, UITableVie
             let vc = WebviewViewController.init(nibName: "WebviewViewController", bundle: nil)
             vc.URLString = "https://www.rtgvisas.com/contact.aspx"
             vc.NavigationTitle = "Contact Us"
+            let aObjNavi = UINavigationController(rootViewController: vc)
+            aObjNavi.navigationBar.isTranslucent = false
+            aObjNavi.navigationBar.tintColor = UIColor.white
+            aObjNavi.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            self.present(aObjNavi, animated: true, completion: nil)
+        }
+        else if indexPath.section == 8 {
+            let vc = AboutUsViewController.init(nibName: "AboutUsViewController", bundle: nil)
+            vc.NavigationTitle = "About Us"
             let aObjNavi = UINavigationController(rootViewController: vc)
             aObjNavi.navigationBar.isTranslucent = false
             aObjNavi.navigationBar.tintColor = UIColor.white
