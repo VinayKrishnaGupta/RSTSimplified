@@ -36,7 +36,9 @@ class ChooseImmigrationTypeViewController: UIViewController, UIPickerViewDataSou
         
         
         let backButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "Back_Button"), style: UIBarButtonItemStyle.done, target: self, action: #selector(BackButtonmethod))
+        let VideoCalling : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "videocalling"), style: .done, target: self, action: #selector(VideoCallingMethod))
         self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.rightBarButtonItem = VideoCalling
         self.navigationItem.title = "Immigration"
         
         citizenofTextField.layer.cornerRadius = 10
@@ -231,6 +233,12 @@ class ChooseImmigrationTypeViewController: UIViewController, UIPickerViewDataSou
     func BackButtonmethod() {
         self.dismiss(animated: true, completion: nil)
         self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    func VideoCallingMethod(){
+        print("video calling method")
+        self.performSegue(withIdentifier: "chooseOnlineConsultation", sender: self)
+        
         
     }
     override func didReceiveMemoryWarning() {

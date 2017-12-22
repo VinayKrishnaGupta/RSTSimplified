@@ -20,6 +20,7 @@
 		2F1815711FDFE28C00EDD682 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F18156F1FDFE28C00EDD682 /* AboutUsViewController.swift */; };
 		2F1815721FDFE28C00EDD682 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1815701FDFE28C00EDD682 /* AboutUsViewController.xib */; };
 		2F1815761FE1117800EDD682 /* ChooseVisaTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1815751FE1117800EDD682 /* ChooseVisaTypeViewController.swift */; };
+		2F1815CE1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1815CD1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift */; };
 		2F1DB5E11FBC1BFC005A7306 /* webViewHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */; };
 		2F1DB5E21FBC1BFC005A7306 /* webViewHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */; };
 		2F939B321FD18171005627CF /* AirportWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F939B301FD18170005627CF /* AirportWebViewController.swift */; };
@@ -78,6 +79,7 @@
 		2F18156F1FDFE28C00EDD682 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		2F1815701FDFE28C00EDD682 /* AboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		2F1815751FE1117800EDD682 /* ChooseVisaTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVisaTypeViewController.swift; sourceTree = "<group>"; };
+		2F1815CD1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOnlineConsultationViewController.swift; sourceTree = "<group>"; };
 		2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewHeaderViewController.swift; sourceTree = "<group>"; };
 		2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = webViewHeaderViewController.xib; sourceTree = "<group>"; };
 		2F939B301FD18170005627CF /* AirportWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportWebViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				2FFCBACF1FB97D8B00B28801 /* Immigration.storyboard */,
 				2F010ABB1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift */,
+				2F1815CD1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift */,
 			);
 			path = Immigration;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				2F1815761FE1117800EDD682 /* ChooseVisaTypeViewController.swift in Sources */,
 				2FFCBAC11FA8500200B28801 /* Visa1WebViewController.swift in Sources */,
 				2FFCBACC1FB1A8D200B28801 /* WebviewViewController.swift in Sources */,
+				2F1815CE1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift in Sources */,
 				2FFCBAC41FA88D9300B28801 /* APIHandler.m in Sources */,
 				2FFCBAC91FAC4F2300B28801 /* IndoesiaVisaRGTViewController.swift in Sources */,
 				2F1DB5E11FBC1BFC005A7306 /* webViewHeaderViewController.swift in Sources */,
