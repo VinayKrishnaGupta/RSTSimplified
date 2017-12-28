@@ -82,7 +82,6 @@ class ChooseOnlineConsultationViewController: UIViewController, UIPickerViewData
     
     func SetUpPickers(){
         
-       
         
         LivingINPicker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
         LivingINPicker.dataSource = self
@@ -184,6 +183,13 @@ class ChooseOnlineConsultationViewController: UIViewController, UIPickerViewData
         }
     }
     
+    @IBAction func SearchButton(_ sender: UIButton) {
+        self.SearchButtonMethod()
+    }
+    
+    func SearchButtonMethod(){
+        self.performSegue(withIdentifier: "OfficerListsVC", sender: self)
+    }
     
     
     /*
