@@ -24,6 +24,7 @@ class Visa1WebViewController: UIViewController, WKUIDelegate {
         webView.uiDelegate = self
         view = webView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

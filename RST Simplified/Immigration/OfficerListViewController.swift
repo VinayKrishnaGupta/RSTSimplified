@@ -52,8 +52,8 @@ class OfficerListViewController: UIViewController, UITableViewDataSource, UITabl
         ]
         let parameter = ["process":"canada-immigrationhub.com","living_in":"124", "timezone" : "Asia/Kabul"]
         
-        Alamofire.request( URL(string:"https://rtg-rst.com/v1/scheduler/get-data/person")!, method: .post, parameters:parameter, headers: HEADERS )
-       // Alamofire.request(URL(string:"https://rtg-rst.com/v1/scheduler/get-data/person")!, method: .post, parameters: parameter, encoding: .JSON, headers: HEADERS)
+       // Alamofire.request( URL(string:"https://rtg-rst.com/v1/scheduler/get-data/person")!, method: .post, parameters:parameter, headers: HEADERS )
+        Alamofire.request(URL(string:"https://rtg-rst.com/v1/scheduler/get-data/person")!, method: .post, parameters: parameter, encoding: JSONEncoding.default , headers: HEADERS)
             .responseJSON { response in
                 debugPrint(response)
                 
