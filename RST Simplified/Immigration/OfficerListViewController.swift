@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SDWebImage
 
 class OfficerListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +31,13 @@ class OfficerListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        if  ConsultationDataHandler.sharedInstance.ConsultantList.count != 0{
+            return ConsultationDataHandler.sharedInstance.ConsultantList.count
+        }
+        else {
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,9 +46,35 @@ class OfficerListViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : OfficerProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OfficerProfileTableViewCell
+        let dict : NSDictionary = ConsultationDataHandler.sharedInstance.ConsultantList[indexPath.section] as! NSDictionary
+        cell.NameLabel.text = dict.value(forKeyPath: "per_name") as? String
+        cell.designationLabel.text = dict.value(forKey: "per_designation") as? String
+        let imageURLString : String = dict.value(forKey: "per_img") as! String
+        cell.cellImageView.sd_setImage(with: URL(string:imageURLString), placeholderImage: UIImage.init(named: "profiledummy"))
+        cell.addressLabel.text = dict.value(forKeyPath: "per_address") as? String
+        let feesArray : Array<Any> = dict.value(forKeyPath: "modes") as! Array<Any>
+        
+        for item in feesArray {
+            let dict2 : NSDictionary = item as! NSDictionary
+            let feesName : String = (dict2.value(forKey: "mode_name") as? String)!
+            let feesValue : String = (dict2.value(forKey: "mode_price") as? String)!
+            cell.feeLabel.text = "Starts " + "USD " + feesValue
+            
+        }
+        
+        let descriptionLabel : String = dict.value(forKey: "per_about") as! String
+        cell.descriptionLabel.text = "About" + ": " + descriptionLabel
+        
+        
+        
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "bookingInformation", sender: self)
+    }
+    
     
     func GetConsultantData(){
         let HEADERS: HTTPHeaders = [
@@ -51,7 +84,6 @@ class OfficerListViewController: UIViewController, UITableViewDataSource, UITabl
             
         ]
         let parameter = ["process":"canada-immigrationhub.com","living_in":"124", "timezone" : "Asia/Kabul"]
-        
        // Alamofire.request( URL(string:"https://rtg-rst.com/v1/scheduler/get-data/person")!, method: .post, parameters:parameter, headers: HEADERS )
         Alamofire.request(URL(string:"https://rtg-rst.com/v1/scheduler/get-data/person")!, method: .post, parameters: parameter, encoding: JSONEncoding.default , headers: HEADERS)
             .responseJSON { response in
@@ -62,8 +94,8 @@ class OfficerListViewController: UIViewController, UITableViewDataSource, UITabl
                     let dict = json as! NSDictionary
                     let type : String = dict.value(forKeyPath: "Response.status.type") as! String
                     if (type == "Success") {
-                       
-                        
+                        ConsultationDataHandler.sharedInstance.ConsultantList = dict.value(forKeyPath: "Response.data.data") as! [Any]
+                     self.tableView.reloadData()
                     }
                     else {
                         

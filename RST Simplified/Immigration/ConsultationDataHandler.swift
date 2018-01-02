@@ -11,7 +11,9 @@ import UIKit
 class ConsultationDataHandler: NSObject {
     
     var ConsultantList = Array<Any>()
-    
+    var SelectedService = String()
+    var SelectedLivingInName = String()
+    var SelectedLivingInID = String()
   
     static let sharedInstance:ConsultationDataHandler = {
         let instance = ConsultationDataHandler ()

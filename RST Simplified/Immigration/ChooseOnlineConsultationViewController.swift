@@ -31,6 +31,8 @@ class ChooseOnlineConsultationViewController: UIViewController, UIPickerViewData
         LivingInTextField.layer.borderColor = UIColor.darkGray.cgColor
         LivingInTextField.layer.borderWidth = 0.5
         LivingInTextField.layer.masksToBounds = true
+         self.SetUpPickers()
+       
         
         // Do any additional setup after loading the view.
     }
@@ -68,7 +70,8 @@ class ChooseOnlineConsultationViewController: UIViewController, UIPickerViewData
                     let type : String = dict.value(forKeyPath: "Response.status.type") as! String
                     if (type == "Success") {
                         self.CountryNamesList = dict.value(forKeyPath: "Response.data.data.countryName") as! [String]
-                        self.SetUpPickers()
+                        self.ServicesPicker.reloadAllComponents()
+                        self.LivingINPicker.reloadAllComponents()
                         
                     }
                     else {
@@ -133,10 +136,26 @@ class ChooseOnlineConsultationViewController: UIViewController, UIPickerViewData
         
     }
     func doneClick() {
+        let indexpath1 = LivingINPicker.selectedRow(inComponent: 0)
+        if indexpath1>0 {
+            LivingInTextField.text = " " + CountryNamesList[indexpath1]
+            ConsultationDataHandler.sharedInstance.SelectedService = self.CountryNamesList[indexpath1]
+            
+        }
+        let indexpath2 = ServicesPicker.selectedRow(inComponent: 0)
+        if indexpath2>0 {
+            selectServiceTextField.text = " " + ListofServices[indexpath2]
+            ConsultationDataHandler.sharedInstance.SelectedService = self.ListofServices[indexpath2]
+        }
         
+        selectServiceTextField.resignFirstResponder()
+        LivingInTextField.resignFirstResponder()
+
     }
+    
     func cancelClick() {
-        
+        selectServiceTextField.resignFirstResponder()
+        LivingInTextField.resignFirstResponder()
     }
     
      func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

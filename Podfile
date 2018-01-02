@@ -6,13 +6,14 @@ target 'RST Simplified' do
 pod 'AFNetworking', '~> 3.0'
 pod 'DropDown'
 pod 'SVProgressHUD'
-#pod 'SDWebImage', '~>3.8'
+pod 'SDWebImage', '~>3.8'
 pod 'SideMenuController'
 pod 'Alamofire'
 pod 'MRProgress'
-pod 'SVProgressHUD'
+#pod 'SVProgressHUD'
 pod 'SearchTextField'
 pod 'MarqueeLabel'
+pod "CTPanoramaView", "~> 1.0"
 use_frameworks!
 
   # Pods for RST Simplified
