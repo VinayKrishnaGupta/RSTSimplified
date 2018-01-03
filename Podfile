@@ -13,7 +13,7 @@ pod 'MRProgress'
 #pod 'SVProgressHUD'
 pod 'SearchTextField'
 pod 'MarqueeLabel'
-pod "CTPanoramaView", "~> 1.0"
+pod 'ImagePicker'
 use_frameworks!
 
   # Pods for RST Simplified

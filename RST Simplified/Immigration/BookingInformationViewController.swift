@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class BookingInformationViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -21,7 +23,12 @@ class BookingInformationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func submitRequest(_ sender: UIButton) {
+       
+    }
+    @IBAction func uploadDocumentButton(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 
