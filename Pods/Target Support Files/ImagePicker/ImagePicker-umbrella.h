@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double CTPanoramaViewVersionNumber;
-FOUNDATION_EXPORT const unsigned char CTPanoramaViewVersionString[];
+FOUNDATION_EXPORT double ImagePickerVersionNumber;
+FOUNDATION_EXPORT const unsigned char ImagePickerVersionString[];
 
