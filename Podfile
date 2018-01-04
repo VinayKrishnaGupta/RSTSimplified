@@ -13,7 +13,8 @@ pod 'MRProgress'
 #pod 'SVProgressHUD'
 pod 'SearchTextField'
 pod 'MarqueeLabel'
-pod 'ImagePicker'
+pod 'ImagePicker', '~>2.1.1'
+pod 'Lightbox', '~>1.1.0'
 use_frameworks!
 
   # Pods for RST Simplified

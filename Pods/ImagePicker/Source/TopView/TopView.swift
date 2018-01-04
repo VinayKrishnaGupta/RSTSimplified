@@ -6,7 +6,7 @@ protocol TopViewDelegate: class {
   func rotateDeviceDidPress()
 }
 
-open class TopView: UIView {
+class TopView: UIView {
 
   struct Dimensions {
     static let leftOffset: CGFloat = 11
@@ -19,7 +19,7 @@ open class TopView: UIView {
   var currentFlashIndex = 0
   let flashButtonTitles = ["AUTO", "ON", "OFF"]
 
-  open lazy var flashButton: UIButton = { [unowned self] in
+  lazy var flashButton: UIButton = { [unowned self] in
     let button = UIButton()
     button.setImage(AssetManager.getImage("AUTO"), for: UIControlState())
     button.setTitle("AUTO", for: UIControlState())
@@ -33,7 +33,7 @@ open class TopView: UIView {
     return button
     }()
 
-  open lazy var rotateCamera: UIButton = { [unowned self] in
+  lazy var rotateCamera: UIButton = { [unowned self] in
     let button = UIButton()
     button.setImage(AssetManager.getImage("cameraIcon"), for: UIControlState())
     button.addTarget(self, action: #selector(rotateCameraButtonDidPress(_:)), for: .touchUpInside)
@@ -54,12 +54,12 @@ open class TopView: UIView {
     configure()
   }
 
-  override public init(frame: CGRect) {
+  override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
   }
 
-  required public init?(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -79,14 +79,12 @@ open class TopView: UIView {
       addSubview(button)
     }
 
-    flashButton.isHidden = configuration.flashButtonAlwaysHidden
-
     setupConstraints()
   }
 
   // MARK: - Action methods
 
-  @objc func flashButtonDidPress(_ button: UIButton) {
+  func flashButtonDidPress(_ button: UIButton) {
     currentFlashIndex += 1
     currentFlashIndex = currentFlashIndex % flashButtonTitles.count
 
@@ -107,7 +105,7 @@ open class TopView: UIView {
     delegate?.flashButtonDidPress(newTitle)
   }
 
-  @objc func rotateCameraButtonDidPress(_ button: UIButton) {
+  func rotateCameraButtonDidPress(_ button: UIButton) {
     delegate?.rotateDeviceDidPress()
   }
 }

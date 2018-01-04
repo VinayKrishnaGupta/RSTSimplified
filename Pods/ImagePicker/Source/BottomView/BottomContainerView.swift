@@ -17,10 +17,9 @@ open class BottomContainerView: UIView {
   var configuration = Configuration()
 
   lazy var pickerButton: ButtonPicker = { [unowned self] in
-    let pickerButton = ButtonPicker(configuration: self.configuration)
+    let pickerButton = ButtonPicker()
     pickerButton.setTitleColor(UIColor.white, for: UIControlState())
     pickerButton.delegate = self
-    pickerButton.numberLabel.isHidden = !self.configuration.showsImageCountLabel
 
     return pickerButton
     }()
@@ -92,7 +91,7 @@ open class BottomContainerView: UIView {
 
   // MARK: - Action methods
 
-  @objc func doneButtonDidPress(_ button: UIButton) {
+  func doneButtonDidPress(_ button: UIButton) {
     if button.currentTitle == configuration.cancelButtonTitle {
       delegate?.cancelButtonDidPress()
     } else {
@@ -100,7 +99,7 @@ open class BottomContainerView: UIView {
     }
   }
 
-  @objc func handleTapGestureRecognizer(_ recognizer: UITapGestureRecognizer) {
+  func handleTapGestureRecognizer(_ recognizer: UITapGestureRecognizer) {
     delegate?.imageStackViewDidPress()
   }
 
@@ -110,7 +109,7 @@ open class BottomContainerView: UIView {
     UIView.animate(withDuration: 0.3, animations: {
       imageView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
       }, completion: { _ in
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: { _ in
           imageView.transform = CGAffineTransform.identity
         })
     })

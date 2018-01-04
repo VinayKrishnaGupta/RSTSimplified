@@ -15,17 +15,15 @@ open class AssetManager {
     return UIImage(named: name, in: bundle, compatibleWith: traitCollection) ?? UIImage()
   }
 
-  open static func fetch(withConfiguration configuration: Configuration, _ completion: @escaping (_ assets: [PHAsset]) -> Void) {
+  open static func fetch(_ completion: @escaping (_ assets: [PHAsset]) -> Void) {
     guard PHPhotoLibrary.authorizationStatus() == .authorized else { return }
 
     DispatchQueue.global(qos: .background).async {
-      let fetchResult = configuration.allowVideoSelection
-        ? PHAsset.fetchAssets(with: PHFetchOptions())
-        : PHAsset.fetchAssets(with: .image, options: PHFetchOptions())
+      let fetchResult = PHAsset.fetchAssets(with: .image, options: PHFetchOptions())
 
       if fetchResult.count > 0 {
         var assets = [PHAsset]()
-        fetchResult.enumerateObjects({ object, _, _ in
+        fetchResult.enumerateObjects({ object, index, stop in
           assets.insert(object, at: 0)
         })
 
@@ -58,7 +56,7 @@ open class AssetManager {
 
     var images = [UIImage]()
     for asset in assets {
-      imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: requestOptions) { image, _ in
+      imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: requestOptions) { image, info in
         if let image = image {
           images.append(image)
         }

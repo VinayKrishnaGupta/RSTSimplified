@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import ImagePicker
+import Lightbox
 
 
 
-class BookingInformationViewController: UIViewController {
 
+class BookingInformationViewController: UIViewController, ImagePickerDelegate {
+    let imagePickerController = ImagePickerController()
+    var imagearray  = [UIImage]()
+    
+    @IBOutlet var notesAboutWhyTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imagePickerController.delegate = self
+        let myColor = UIColor.lightGray
+        notesAboutWhyTextView.layer.borderWidth = 0.5
+        notesAboutWhyTextView.layer.cornerRadius = 5
+        notesAboutWhyTextView.layer.borderColor = myColor.cgColor
         // Do any additional setup after loading the view.
     }
 
@@ -27,6 +37,26 @@ class BookingInformationViewController: UIViewController {
        
     }
     @IBAction func uploadDocumentButton(_ sender: UIButton) {
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        guard images.count > 0 else { return }
+        let lightboxImages = images.map {
+            return LightboxImage(image: $0)
+        }
+
+        let lightbox = LightboxController(images: lightboxImages, startIndex: 0)
+        imagePicker.present(lightbox, animated: true, completion: nil)
+
+    }
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        imagearray = images
+       
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+         imagePicker.dismiss(animated: true, completion: nil)
     }
     
     /*
