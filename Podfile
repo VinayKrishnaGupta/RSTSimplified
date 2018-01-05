@@ -15,6 +15,7 @@ pod 'SearchTextField'
 pod 'MarqueeLabel'
 pod 'ImagePicker', '~>2.1.1'
 pod 'Lightbox', '~>1.1.0'
+pod 'CheckoutKit', '~>3.0.0'
 use_frameworks!
 
   # Pods for RST Simplified
