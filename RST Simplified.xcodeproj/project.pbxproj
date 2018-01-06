@@ -23,6 +23,7 @@
 		2F1815CE1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1815CD1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift */; };
 		2F1DB5E11FBC1BFC005A7306 /* webViewHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */; };
 		2F1DB5E21FBC1BFC005A7306 /* webViewHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */; };
+		2F77B2B12000A27000F2AED8 /* PaymentSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77B2B02000A27000F2AED8 /* PaymentSummaryViewController.swift */; };
 		2F939B321FD18171005627CF /* AirportWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F939B301FD18170005627CF /* AirportWebViewController.swift */; };
 		2F939B331FD18171005627CF /* AirportWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F939B311FD18170005627CF /* AirportWebViewController.xib */; };
 		2FA0AB8D1FA31B3900F9F040 /* CustomSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0AB8C1FA31B3900F9F040 /* CustomSideMenuViewController.swift */; };
@@ -87,6 +88,7 @@
 		2F1815CD1FED03BB00EDD682 /* ChooseOnlineConsultationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOnlineConsultationViewController.swift; sourceTree = "<group>"; };
 		2F1DB5DF1FBC1BFC005A7306 /* webViewHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewHeaderViewController.swift; sourceTree = "<group>"; };
 		2F1DB5E01FBC1BFC005A7306 /* webViewHeaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = webViewHeaderViewController.xib; sourceTree = "<group>"; };
+		2F77B2B02000A27000F2AED8 /* PaymentSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSummaryViewController.swift; sourceTree = "<group>"; };
 		2F939B301FD18170005627CF /* AirportWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportWebViewController.swift; sourceTree = "<group>"; };
 		2F939B311FD18170005627CF /* AirportWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirportWebViewController.xib; sourceTree = "<group>"; };
 		2FA0AB8C1FA31B3900F9F040 /* CustomSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				2FBF103C1FF6312800BF38DE /* ConsultationDataHandler.swift */,
 				2FBF103E1FFB7DB800BF38DE /* BookingInformationViewController.swift */,
 				2FDD67A71FFF4AC80069C3BF /* paymentPageViewController.swift */,
+				2F77B2B02000A27000F2AED8 /* PaymentSummaryViewController.swift */,
 			);
 			path = Immigration;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				2FBF103F1FFB7DB800BF38DE /* BookingInformationViewController.swift in Sources */,
 				2FB06DE31FF4BEF700609715 /* OfficerProfileTableViewCell.swift in Sources */,
 				2FA0AB8F1FA31D9F00F9F040 /* SideBarViewController.swift in Sources */,
+				2F77B2B12000A27000F2AED8 /* PaymentSummaryViewController.swift in Sources */,
 				2F091E291F8B4B590053E642 /* AppDelegate.swift in Sources */,
 				2F1815711FDFE28C00EDD682 /* AboutUsViewController.swift in Sources */,
 				2F010ABC1FB98DE7008AAC58 /* ChooseImmigrationTypeViewController.swift in Sources */,

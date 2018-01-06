@@ -23,14 +23,14 @@ class ChooseOnlineConsultationViewController: UIViewController, UIPickerViewData
         super.viewDidLoad()
         self.ListofServices = ["Select One", "Canada", "India", "United Kingdom","United States of America"]
 
-        selectServiceTextField.layer.cornerRadius = 10
-        selectServiceTextField.layer.borderColor = UIColor.darkGray.cgColor
-        selectServiceTextField.layer.borderWidth = 0.5
-        selectServiceTextField.layer.masksToBounds = true
-        LivingInTextField.layer.cornerRadius = 10
-        LivingInTextField.layer.borderColor = UIColor.darkGray.cgColor
-        LivingInTextField.layer.borderWidth = 0.5
-        LivingInTextField.layer.masksToBounds = true
+//        selectServiceTextField.layer.cornerRadius = 10
+//        selectServiceTextField.layer.borderColor = UIColor.darkGray.cgColor
+//        selectServiceTextField.layer.borderWidth = 0.5
+//        selectServiceTextField.layer.masksToBounds = true
+//        LivingInTextField.layer.cornerRadius = 10
+//        LivingInTextField.layer.borderColor = UIColor.darkGray.cgColor
+//        LivingInTextField.layer.borderWidth = 0.5
+//        LivingInTextField.layer.masksToBounds = true
          self.SetUpPickers()
        
         

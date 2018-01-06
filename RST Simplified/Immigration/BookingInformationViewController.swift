@@ -34,7 +34,7 @@ class BookingInformationViewController: UIViewController, ImagePickerDelegate {
     }
     
     @IBAction func submitRequest(_ sender: UIButton) {
-       self.performSegue(withIdentifier: "paymentPageVC", sender: self)
+       self.performSegue(withIdentifier: "paymentSummary", sender: self)
     }
     @IBAction func uploadDocumentButton(_ sender: UIButton) {
         self.present(imagePickerController, animated: true, completion: nil)
